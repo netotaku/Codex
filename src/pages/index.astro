@@ -1,0 +1,27 @@
+---
+const title = 'Codex · Astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Astro is ready</p>
+      <h1>Hello from Codex.</h1>
+      <p>A minimal Astro project, ready for our next experiment.</p>
+    </main>
+  </body>
+</html>
+<style>
+  :global(html) { font-family: system-ui, sans-serif; background: #101114; color: #f6f6f6; }
+  :global(body) { margin: 0; min-height: 100vh; display: grid; place-items: center; }
+  main { padding: 2rem; max-width: 42rem; }
+  .eyebrow { color: #ff9950; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
+  h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: .3em 0; }
+  p { line-height: 1.6; }
+</style>
