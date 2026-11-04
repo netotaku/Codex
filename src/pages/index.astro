@@ -1,27 +1,184 @@
 ---
-const title = 'Codex · Astro';
+// MVP: deliberately unstyled. All playback runs in a single persistent iframe.
 ---
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <p class="eyebrow">Astro is ready</p>
-      <h1>Hello from Codex.</h1>
-      <p>A minimal Astro project, ready for our next experiment.</p>
-    </main>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Broadcast — Playback Test</title>
+</head>
+<body>
+<main>
+  <h1>Personal Broadcast</h1>
+  <p>One blended YouTube feed. Tap Start once to enable playback.</p>
+  <p><button id="start">Start / retry playback</button> <button id="refresh">Refresh feeds</button></p>
+  <p id="status" role="status">Loading subscriptions…</p>
+  <div id="player" style="width:100%;aspect-ratio:16/9;max-width:900px;background:#ddd"></div>
+  <h2 id="title">Waiting for videos</h2>
+  <p id="details"></p>
+  <p>
+    <button id="previous">← Previous</button>
+    <button id="toggle">Play / pause</button>
+    <button id="next">Next →</button>
+  </p>
+  <label>Position <input id="seek" type="range" min="0" max="1000" value="0" style="width:min(80vw,500px)" /></label>
+  <span id="time">0:00 / 0:00</span>
+  <p>Swipe right for next, left for previous (outside the YouTube video). Keyboard: ← / →.</p>
+  <details><summary>Queue (<span id="count">0</span>)</summary><ol id="queue"></ol></details>
+  <details><summary>Diagnostics</summary><button id="clear-log">Clear log</button><pre id="log" style="white-space:pre-wrap;max-height:300px;overflow:auto"></pre></details>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const STORAGE = 'personal-broadcast-v1';
+let items = [], index = 0, player, ready = false, started = false, isSeeking = false;
+let lastSavedAt = 0;
+const stored = (() => { try { return JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch { return {}; } })();
+const log = (event, detail = '') => {
+  const line = new Date().toLocaleTimeString() + ' ' + event + (detail ? ' ' + detail : '');
+  $('log').textContent = (line + '\n' + $('log').textContent).slice(0, 12000);
+  console.info('[broadcast]', line);
+};
+const setStatus = (value) => { $('status').textContent = value; log(value); };
+const format = (seconds) => { const s = Math.max(0, Math.floor(Number(seconds) || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+function save(force = false) {
+  if (!force && Date.now() - lastSavedAt < 4000) return;
+  lastSavedAt = Date.now();
+  try {
+    localStorage.setItem(STORAGE, JSON.stringify({
+      videoId: items[index]?.videoId, index,
+      position: ready && player?.getCurrentTime ? player.getCurrentTime() : 0,
+      updated: Date.now()
+    }));
+  } catch (error) { log('storage error', String(error)); }
+}
+function render() {
+  const current = items[index];
+  $('count').textContent = String(items.length);
+  $('title').textContent = current?.title || 'No videos available';
+  $('details').textContent = current ? `${current.source} · ${new Date(current.published).toLocaleString()}` : '';
+  $('queue').replaceChildren(...items.map((item, i) => {
+    const li = document.createElement('li');
+    const button = document.createElement('button');
+    button.textContent = (i === index ? '▶ ' : '') + item.source + ': ' + item.title;
+    button.addEventListener('click', () => go(i));
+    li.append(button);
+    return li;
+  }));
+}
+function go(nextIndex) {
+  if (!items.length || nextIndex < 0 || nextIndex >= items.length) return;
+  index = nextIndex;
+  render();
+  save(true);
+  if (ready) {
+    player.loadVideoById(items[index].videoId);
+    log('loadVideoById', items[index].videoId);
+  }
+}
+function next() { go(index + 1); }
+function previous() { go(index - 1); }
+function toggle() {
+  if (!ready) return;
+  const state = player.getPlayerState();
+  if (state === YT.PlayerState.PLAYING) player.pauseVideo();
+  else player.playVideo();
+}
+async function loadFeed() {
+  setStatus('Fetching public channel feeds…');
+  try {
+    const response = await fetch('/.netlify/functions/feed', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Feed HTTP ' + response.status);
+    const data = await response.json();
+    if (!Array.isArray(data.items)) throw new Error('Invalid feed response');
+    items = data.items;
+    const restoredIndex = items.findIndex(item => item.videoId === stored.videoId);
+    index = restoredIndex >= 0 ? restoredIndex : 0;
+    render();
+    setStatus(`${items.length} videos from ${data.sources?.filter(s => s.count > 0).length || 0} sources.`);
+    for (const source of data.sources || []) if (source.error) log('source unavailable: ' + source.name, source.error);
+    if (!items.length) setStatus('No videos returned. Open Diagnostics to inspect source errors.');
+    if (ready && items.length && started) go(index);
+  } catch (error) {
+    setStatus('Feed failed: ' + error.message + '. Check Netlify function deployment.');
+  }
+}
+function initPlayer() {
+  player = new YT.Player('player', {
+    width: '900', height: '506',
+    videoId: items[index]?.videoId || '',
+    playerVars: { playsinline: 1, rel: 0, origin: location.origin },
+    events: {
+      onReady: () => {
+        ready = true; log('player ready');
+        if (items.length && stored.videoId === items[index]?.videoId && stored.position > 0) {
+          player.cueVideoById({ videoId: items[index].videoId, startSeconds: stored.position });
+          log('restored position', format(stored.position));
+        }
+      },
+      onStateChange: (event) => {
+        const states = { '-1':'unstarted', 0:'ended', 1:'playing', 2:'paused', 3:'buffering', 5:'cued' };
+        log('player state', states[event.data] || event.data);
+        if (event.data === YT.PlayerState.ENDED) next();
+        if (event.data === YT.PlayerState.PAUSED) save(true);
+      },
+      onError: (event) => log('player error', String(event.data)),
+      onAutoplayBlocked: () => log('AUTOPLAY BLOCKED')
+    }
+  });
+}
+window.onYouTubeIframeAPIReady = initPlayer;
+const script = document.createElement('script');
+script.src = 'https://www.youtube.com/iframe_api';
+document.head.append(script);
+$('start').addEventListener('click', () => {
+  started = true;
+  if (!ready) { setStatus('Player not ready yet'); return; }
+  if (!items.length) { setStatus('No videos to play'); return; }
+  player.loadVideoById(items[index].videoId);
+  log('user initiated playback');
+});
+$('refresh').addEventListener('click', loadFeed);
+$('next').addEventListener('click', next);
+$('previous').addEventListener('click', previous);
+$('toggle').addEventListener('click', toggle);
+$('clear-log').addEventListener('click', () => { $('log').textContent = ''; });
+$('seek').addEventListener('pointerdown', () => { isSeeking = true; });
+$('seek').addEventListener('input', () => { isSeeking = true; });
+$('seek').addEventListener('change', () => {
+  if (ready) player.seekTo(Number($('seek').value) / 1000 * (player.getDuration() || 0), true);
+  isSeeking = false;
+});
+setInterval(() => {
+  if (!ready) return;
+  const duration = player.getDuration() || 0;
+  const current = player.getCurrentTime() || 0;
+  $('time').textContent = format(current) + ' / ' + format(duration);
+  if (!isSeeking && duration) $('seek').value = String(Math.round(current / duration * 1000));
+  if (player.getPlayerState() === YT.PlayerState.PLAYING) save();
+}, 1000);
+document.addEventListener('visibilitychange', () => { log('visibility', document.visibilityState); save(true); });
+window.addEventListener('pagehide', () => { log('pagehide'); save(true); });
+window.addEventListener('pageshow', (e) => log('pageshow', e.persisted ? 'bfcache' : 'normal'));
+let touchStart = null;
+document.addEventListener('touchstart', (e) => {
+  if (e.target.closest('button, input, details, #player')) return;
+  const t = e.changedTouches[0];
+  touchStart = { x:t.clientX, y:t.clientY };
+}, { passive:true });
+document.addEventListener('touchend', (e) => {
+  if (!touchStart) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - touchStart.x, dy = t.clientY - touchStart.y;
+  touchStart = null;
+  if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.5) dx > 0 ? next() : previous();
+}, { passive:true });
+document.addEventListener('keydown', (e) => {
+  if (e.target instanceof HTMLInputElement) return;
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') previous();
+});
+loadFeed();
+</script>
+</body>
 </html>
-<style>
-  :global(html) { font-family: system-ui, sans-serif; background: #101114; color: #f6f6f6; }
-  :global(body) { margin: 0; min-height: 100vh; display: grid; place-items: center; }
-  main { padding: 2rem; max-width: 42rem; }
-  .eyebrow { color: #ff9950; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
-  h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: .3em 0; }
-  p { line-height: 1.6; }
-</style>
