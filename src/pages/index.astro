@@ -52,8 +52,7 @@ let lastSavedAt = 0;
 const stored = (() => { try { return JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch { return {}; } })();
 const log = (event, detail = '') => {
   const line = new Date().toLocaleTimeString() + ' ' + event + (detail ? ' ' + detail : '');
-  $('log').textContent = (line + '
-' + $('log').textContent).slice(0, 12000);
+  $('log').textContent = (line + '\n' + $('log').textContent).slice(0, 12000);
   console.info('[broadcast]', line);
 };
 const setStatus = (value) => { log(value); };
