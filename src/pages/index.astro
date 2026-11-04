@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Personal Broadcast — Playback Test</title>
 </head>
@@ -111,6 +112,7 @@ function initPlayer() {
     events: {
       onReady: () => {
         ready = true; log('player ready');
+        player.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
         if (items.length && stored.videoId === items[index]?.videoId && stored.position > 0) {
           player.cueVideoById({ videoId: items[index].videoId, startSeconds: stored.position });
           log('restored position', format(stored.position));
@@ -122,7 +124,11 @@ function initPlayer() {
         if (event.data === YT.PlayerState.ENDED) next();
         if (event.data === YT.PlayerState.PAUSED) save(true);
       },
-      onError: (event) => log('player error', String(event.data)),
+      onError: (event) => {
+        log('player error', String(event.data));
+        if (event.data === 153) setStatus('YouTube rejected the embed identity (error 153). Open this site directly in Safari and retry.');
+        else if (event.data === 101 || event.data === 150) setStatus('This video does not allow embedding. Try Next.');
+      },
       onAutoplayBlocked: () => log('AUTOPLAY BLOCKED')
     }
   });
