@@ -8,7 +8,22 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Personal Broadcast — Playback Test</title>
-<style>html { font-size: 120%; }</style>
+<style>
+  html { font-family: Arial, Helvetica, sans-serif; font-size: 120%; }
+  body { margin: 0; }
+  main { max-width: 900px; margin: auto; padding: 0.75rem; }
+  #player, #player iframe { width: 100%; max-width: 100%; }
+  .controls { display: flex; gap: .5rem; margin: 1rem 0; }
+  button { font: inherit; min-height: 44px; }
+  .controls button { flex: 1; }
+  #queue { list-style: decimal; padding-left: 2rem; }
+  #queue li { padding: .2rem; }
+  #queue li.selected { background: #dce7f5; }
+  #queue li button { border: 0; background: transparent; text-decoration: underline; text-align: left; cursor: pointer; padding: .5rem; width: 100%; }
+  #queue li.selected button { font-weight: bold; }
+  #error { color: #9a1d1d; }
+  pre { font-size: .8rem; }
+</style>
 </head>
 <body>
 <main>
@@ -21,14 +36,14 @@
   <p id="details"></p>
   <p>
     <button id="previous">← Previous</button>
-    <button id="toggle">Play / pause</button>
+    <button id="toggle">Play</button>
     <button id="next">Next →</button>
   </p>
   <label>Position <input id="seek" type="range" min="0" max="1000" value="0" style="width:min(80vw,500px)" /></label>
-  <span id="time">0:00 / 0:00</span>
+  <span id="time" hidden>0:00 / 0:00</span>
   <p>Swipe right for next, left for previous (outside the YouTube video). Keyboard: ← / →.</p>
   <details><summary>Queue (<span id="count">0</span>)</summary><ol id="queue"></ol></details>
-  <details><summary>Diagnostics</summary><button id="clear-log">Clear log</button><pre id="log" style="white-space:pre-wrap;max-height:300px;overflow:auto"></pre></details>
+  <details><summary>Diagnostics</summary><p id="feed-summary"></p><ul id="source-status"></ul><button id="refresh">Refresh feeds</button> <button id="clear-log">Clear log</button><pre id="log" style="white-space:pre-wrap;max-height:300px;overflow:auto"></pre></details>
 </main>
 <script>
 const $ = (id) => document.getElementById(id);
@@ -43,7 +58,7 @@ const log = (event, detail = '') => {
   $('log').textContent = (line + '\n' + $('log').textContent).slice(0, 12000);
   console.info('[broadcast]', line);
 };
-const setStatus = (value) => { $('status').textContent = value; log(value); };
+const setStatus = (value) => { log(value); };\nconst showError = (message) => { $('error').hidden = !message; $('error').textContent = message; };
 const format = (seconds) => { const s = Math.max(0, Math.floor(Number(seconds) || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
 function save(force = false) {
   if (!force && Date.now() - lastSavedAt < 4000) return;
@@ -62,9 +77,9 @@ function render() {
   $('title').textContent = current?.title || 'No videos available';
   $('details').textContent = current ? `${current.source} · ${new Date(current.published).toLocaleString()}` : '';
   $('queue').replaceChildren(...items.map((item, i) => {
-    const li = document.createElement('li');
+    const li = document.createElement('li');\n    if (i === index) { li.className = 'selected'; li.setAttribute('aria-current', 'true'); }
     const button = document.createElement('button');
-    button.textContent = (i === index ? '▶ ' : '') + item.source + ': ' + item.title;
+    button.textContent = item.title;
     button.addEventListener('click', () => go(i));
     li.append(button);
     return li;
@@ -106,13 +121,13 @@ async function loadFeed() {
     const restoredIndex = items.findIndex(item => item.videoId === previousId);
     index = restoredIndex >= 0 ? restoredIndex : 0;
     render();
-    setStatus(`${items.length} queued · ${data.items.length} fetched · ${failedSources.length} source errors${failedSources.length ? ' (cached items retained)' : ''}.`);
+    $('feed-summary').textContent = `${items.length} queued · ${data.items.length} fetched · ${failedSources.length} source errors.`;\n    $('source-status').replaceChildren(...(data.sources || []).map(source => { const li = document.createElement('li'); li.textContent = `${source.name}: ${source.count} videos${source.error ? ' — ' + source.error : ''}`; return li; }));\n    if (items.length) showError('');
     for (const source of data.sources || []) if (source.error) log('source unavailable: ' + source.name, source.error);
-    if (!items.length) setStatus('No videos returned. Open Diagnostics to inspect source errors.');
+    if (!items.length) showError('No videos available. See Diagnostics for feed errors.');
     // Refreshing the feed should not restart a video already playing.
     if (ready && items.length && !player.getVideoData()?.video_id) player.cueVideoById(items[index].videoId);
   } catch (error) {
-    setStatus('Feed failed: ' + error.message + '. Check Netlify function deployment.');
+    showError('Feed unavailable. See Diagnostics.');\n    $('feed-summary').textContent = error.message;
   }
 }
 function initPlayer() {
@@ -132,13 +147,13 @@ function initPlayer() {
       onStateChange: (event) => {
         const states = { '-1':'unstarted', 0:'ended', 1:'playing', 2:'paused', 3:'buffering', 5:'cued' };
         log('player state', states[event.data] || event.data);
-        if (event.data === YT.PlayerState.ENDED) next();
+        $('toggle').textContent = event.data === YT.PlayerState.PLAYING ? 'Pause' : 'Play';\n        if (event.data === YT.PlayerState.PLAYING) showError('');\n        if (event.data === YT.PlayerState.ENDED) next();
         if (event.data === YT.PlayerState.PAUSED) save(true);
       },
       onError: (event) => {
         log('player error', String(event.data));
-        if (event.data === 153) setStatus('YouTube rejected the embed identity (error 153). Open this site directly in Safari and retry.');
-        else if (event.data === 101 || event.data === 150) setStatus('This video does not allow embedding. Try Next.');
+        if (event.data === 153) showError('YouTube playback error 153. Tap Play to retry.');
+        else if (event.data === 101 || event.data === 150) showError('Video cannot be embedded. Try Next.');\n        else showError('Playback error ' + event.data + '. Tap Play to retry.');
       },
       onAutoplayBlocked: () => log('AUTOPLAY BLOCKED')
     }
@@ -148,17 +163,18 @@ window.onYouTubeIframeAPIReady = initPlayer;
 const script = document.createElement('script');
 script.src = 'https://www.youtube.com/iframe_api';
 document.head.append(script);
-$('start').addEventListener('click', () => {
-  started = true;
-  if (!ready) { setStatus('Player not ready yet'); return; }
-  if (!items.length) { setStatus('No videos to play'); return; }
-  player.loadVideoById(items[index].videoId);
-  log('user initiated playback');
-});
-$('refresh').addEventListener('click', loadFeed);
+$('toggle').addEventListener('click', () => {
+  if (!items.length) { showError('No videos available. See Diagnostics.'); return; }
+  if (!ready) { showError('Player is loading. Try again shortly.'); return; }
+  const state = player.getPlayerState();
+  if (state === YT.PlayerState.PLAYING) player.pauseVideo();
+  else if (!started || state === YT.PlayerState.UNSTARTED || state === YT.PlayerState.CUED) {
+    started = true; player.loadVideoById(items[index].videoId);
+  } else { started = true; player.playVideo(); }
+});\n$('refresh').addEventListener('click', loadFeed);
 $('next').addEventListener('click', next);
 $('previous').addEventListener('click', previous);
-$('toggle').addEventListener('click', toggle);
+
 $('clear-log').addEventListener('click', () => { $('log').textContent = ''; });
 $('seek').addEventListener('pointerdown', () => { isSeeking = true; });
 $('seek').addEventListener('input', () => { isSeeking = true; });
