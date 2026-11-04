@@ -90,9 +90,13 @@ function render() {
     link.addEventListener('click', (event) => { event.preventDefault(); go(i); });
     const channel = document.createElement('span');
     channel.className = 'channel';
-    channel.textContent = item.source;
+    const bold = document.createElement('b');
+    bold.textContent = item.source;
+    const small = document.createElement('small');
+    small.append(bold);
+    channel.append(small);
     const paragraph = document.createElement('p');
-    paragraph.append(published, document.createElement('br'), link, document.createElement('br'), channel);
+    paragraph.append(published, document.createElement('br'), channel, document.createElement('br'), link);
     li.append(paragraph);
     return li;
   }));
