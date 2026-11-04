@@ -19,9 +19,9 @@
   #queue { list-style: decimal; padding-left: 2rem; }
   #queue li { padding: .2rem; }
   #queue li.selected { background: #dce7f5; }
-  #queue li a { display: block; color: LinkText; text-decoration: underline; text-align: left; font: inherit; padding: .25rem 0; overflow-wrap: anywhere; }
-  #queue li .channel { display: block; font-size: .8em; margin-top: .15rem; }
-  #queue li .published { display: block; font-size: .75em; margin-bottom: .15rem; }
+  #queue li a { display: inline; color: LinkText; text-decoration: underline; text-align: left; font: inherit; padding: .25rem 0; overflow-wrap: anywhere; }
+  #queue li .channel { display: inline; font-size: .8em; margin-top: .15rem; }
+  #queue li .published { display: inline; font-size: .75em; margin-bottom: .15rem; }
   #queue li.selected a { font-weight: bold; }
   #error { color: #9a1d1d; }
   pre { font-size: .8rem; }
@@ -90,7 +90,7 @@ function render() {
     const channel = document.createElement('span');
     channel.className = 'channel';
     channel.textContent = item.source;
-    li.append(published, link, channel);
+    li.append(published, document.createElement('br'), link, document.createElement('br'), channel);
     return li;
   }));
 }
