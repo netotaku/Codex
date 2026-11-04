@@ -33,7 +33,9 @@
 <script>
 const $ = (id) => document.getElementById(id);
 const STORAGE = 'personal-broadcast-v1';
-let items = [], index = 0, player, ready = false, started = false, isSeeking = false;
+const QUEUE_STORAGE = 'personal-broadcast-queue-v1';
+const readQueue = () => { try { const value = JSON.parse(localStorage.getItem(QUEUE_STORAGE) || '[]'); return Array.isArray(value) ? value : []; } catch { return []; } };
+let items = readQueue(), index = 0, player, ready = false, started = false, isSeeking = false;
 let lastSavedAt = 0;
 const stored = (() => { try { return JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch { return {}; } })();
 const log = (event, detail = '') => {
@@ -93,14 +95,22 @@ async function loadFeed() {
     if (!response.ok) throw new Error('Feed HTTP ' + response.status);
     const data = await response.json();
     if (!Array.isArray(data.items)) throw new Error('Invalid feed response');
-    items = data.items;
-    const restoredIndex = items.findIndex(item => item.videoId === stored.videoId);
+    const previousId = items[index]?.videoId || stored.videoId;
+    const failedSources = (data.sources || []).filter(source => source.error);
+    // Keep previously loaded items when a public feed fails temporarily.
+    // A refresh must never replace a populated queue with a partial result.
+    const merged = new Map(items.map(item => [item.videoId, item]));
+    for (const item of data.items) merged.set(item.videoId, item);
+    items = [...merged.values()].sort((a, b) => new Date(b.published) - new Date(a.published)).slice(0, 300);
+    try { localStorage.setItem(QUEUE_STORAGE, JSON.stringify(items)); } catch (error) { log('queue cache error', String(error)); }
+    const restoredIndex = items.findIndex(item => item.videoId === previousId);
     index = restoredIndex >= 0 ? restoredIndex : 0;
     render();
-    setStatus(`${items.length} videos from ${data.sources?.filter(s => s.count > 0).length || 0} sources.`);
+    setStatus(`${items.length} queued · ${data.items.length} fetched · ${failedSources.length} source errors${failedSources.length ? ' (cached items retained)' : ''}.`);
     for (const source of data.sources || []) if (source.error) log('source unavailable: ' + source.name, source.error);
     if (!items.length) setStatus('No videos returned. Open Diagnostics to inspect source errors.');
-    if (ready && items.length && started) go(index);
+    // Refreshing the feed should not restart a video already playing.
+    if (ready && items.length && !player.getVideoData()?.video_id) player.cueVideoById(items[index].videoId);
   } catch (error) {
     setStatus('Feed failed: ' + error.message + '. Check Netlify function deployment.');
   }
@@ -185,6 +195,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') next();
   if (e.key === 'ArrowLeft') previous();
 });
+if (items.length) { index = Math.max(0, items.findIndex(item => item.videoId === stored.videoId)); render(); setStatus(`${items.length} cached videos; refreshing sources…`); }
 loadFeed();
 </script>
 </body>
