@@ -87,8 +87,10 @@ function render() {
     if (i === index) { li.className = 'selected'; li.setAttribute('aria-current', 'true'); }
     const metadata = document.createElement('small');
     metadata.className = 'metadata';
+    metadata.style.cssText = 'display:block;font-size:.8em;line-height:1.1;margin-bottom:.25em';
     const published = document.createElement('span');
     published.className = 'published';
+    published.style.display = 'block';
     const date = new Date(item.published);
     published.textContent = Number.isNaN(date.getTime()) ? '' : date.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
     const link = document.createElement('a');
@@ -97,11 +99,12 @@ function render() {
     link.addEventListener('click', (event) => { event.preventDefault(); go(i); });
     const channel = document.createElement('span');
     channel.className = 'channel';
+    channel.style.display = 'block';
     const bold = document.createElement('b');
     bold.textContent = item.source;
     channel.append(bold);
     const paragraph = document.createElement('p');
-    metadata.append(published, document.createElement('br'), channel);
+    metadata.append(published, channel);
     paragraph.append(metadata, link);
     li.append(paragraph);
     return li;
