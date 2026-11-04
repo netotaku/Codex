@@ -5,8 +5,8 @@ const subscriptions = [
   { name: 'MeidasTouch', handle: '@MeidasTouch' },
   { name: 'The News Agents', handle: '@thenewsagents' },
   { name: 'Pondering Politics', handle: '@PonderingPolitics' },
-  { name: 'LBC', handle: '@LBC' },
-  { name: 'Brian Tyler Cohen', handle: '@briantylercohen' },
+  { name: 'LBC', channelId: 'UCb1Ti1WKPauPpXkYKVHNpsw' },
+  { name: 'Brian Tyler Cohen', channelId: 'UCQANb2YPwAtK-IQJrLaaUFw' },
   { name: 'Premier Guitar — Rig Rundown', handle: '@premierguitar', include: ['rig rundown'] }
 ];
 const decode = (value = '') => value.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
@@ -26,8 +26,12 @@ async function channelId(handle) {
 }
 async function fetchSource(source) {
   try {
-    const id = source.channelId || await channelId(source.handle);
-    const xml = await getText('https://www.youtube.com/feeds/videos.xml?channel_id=' + encodeURIComponent(id));
+    let id;
+    try { id = source.channelId || await channelId(source.handle); }
+    catch (error) { throw new Error('Channel lookup: ' + error.message); }
+    let xml;
+    try { xml = await getText('https://www.youtube.com/feeds/videos.xml?channel_id=' + encodeURIComponent(id)); }
+    catch (error) { throw new Error('YouTube RSS: ' + error.message + ' (' + id + ')'); }
     const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(match => {
       const entry = match[1];
       return {
