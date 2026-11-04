@@ -22,7 +22,8 @@
   #queue li.selected { background: #dce7f5; }
   #queue li a { display: inline; color: LinkText; text-decoration: underline; text-align: left; font: inherit; padding: .25rem 0; overflow-wrap: anywhere; }
   #queue li .channel { display: inline; }
-  #queue li .published { display: inline; }\n  #queue li .metadata { display: block; font-size: .8em; line-height: 1.2; margin-bottom: .25em; }
+  #queue li .published { display: inline; }
+  #queue li .metadata { display: block; font-size: .8em; line-height: 1.1; margin-bottom: .25em; }
   #queue li.selected a { font-weight: bold; }
   #error { color: #9a1d1d; }
   pre { font-size: .8rem; }
@@ -52,6 +53,10 @@ const QUEUE_STORAGE = 'personal-broadcast-queue-v1';
 const readQueue = () => { try { const value = JSON.parse(localStorage.getItem(QUEUE_STORAGE) || '[]'); return Array.isArray(value) ? value : []; } catch { return []; } };
 let items = readQueue(), index = 0, player, ready = false, started = false, isSeeking = false;
 let lastSavedAt = 0;
+const HISTORY_STORAGE = 'personal-broadcast-history-v1';
+const readHistory = () => { try { const value = JSON.parse(localStorage.getItem(HISTORY_STORAGE) || '[]'); return Array.isArray(value) ? value : []; } catch { return []; } };
+let history = readHistory();
+const persistQueue = () => { try { localStorage.setItem(QUEUE_STORAGE, JSON.stringify(items)); localStorage.setItem(HISTORY_STORAGE, JSON.stringify(history)); } catch (error) { log('queue cache error', String(error)); } };
 const stored = (() => { try { return JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch { return {}; } })();
 const log = (event, detail = '') => {
   const line = new Date().toLocaleTimeString() + ' ' + event + (detail ? ' ' + detail : '');
@@ -80,7 +85,9 @@ function render() {
   $('queue').replaceChildren(...items.map((item, i) => {
     const li = document.createElement('li');
     if (i === index) { li.className = 'selected'; li.setAttribute('aria-current', 'true'); }
-    const metadata = document.createElement('small');\n    metadata.className = 'metadata';\n    const published = document.createElement('span');
+    const metadata = document.createElement('small');
+    metadata.className = 'metadata';
+    const published = document.createElement('span');
     published.className = 'published';
     const date = new Date(item.published);
     published.textContent = Number.isNaN(date.getTime()) ? '' : date.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
@@ -94,7 +101,8 @@ function render() {
     bold.textContent = item.source;
     channel.append(bold);
     const paragraph = document.createElement('p');
-    metadata.append(published, document.createElement('br'), channel);\n    paragraph.append(metadata, link);
+    metadata.append(published, document.createElement('br'), channel);
+    paragraph.append(metadata, link);
     li.append(paragraph);
     return li;
   }));
@@ -110,8 +118,29 @@ function go(nextIndex) {
     log('loadVideoById', items[index].videoId);
   }
 }
-function next() { go(index + 1); }
-function previous() { go(index - 1); }
+function next() {
+  if (!items.length) return;
+  const current = items[index];
+  if (current) history.push(current);
+  // The current video leaves the visible queue when moving forward.
+  items.splice(index, 1);
+  if (index >= items.length) index = Math.max(0, items.length - 1);
+  persistQueue();
+  if (items.length) go(index);
+  else { render(); showError('Fetching more videos…'); }
+  // Replenish the queue as soon as a video is removed.
+  loadFeed();
+}
+function previous() {
+  if (!history.length) return;
+  const restored = history.pop();
+  items.unshift(restored);
+  index = 0;
+  persistQueue();
+  go(0);
+  // Focus the restored item without jumping away from the player.
+  $('queue').querySelector('li.selected a')?.focus({ preventScroll: true });
+}
 function toggle() {
   if (!ready) return;
   const state = player.getPlayerState();
@@ -129,12 +158,13 @@ async function loadFeed() {
     const failedSources = (data.sources || []).filter(source => source.error);
     // Keep previously loaded items when a public feed fails temporarily.
     // A refresh must never replace a populated queue with a partial result.
-    const merged = new Map(items.map(item => [item.videoId, item]));
-    for (const item of data.items) merged.set(item.videoId, item);
+    const playedIds = new Set(history.map(item => item.videoId));
+    const merged = new Map(items.filter(item => !playedIds.has(item.videoId)).map(item => [item.videoId, item]));
+    for (const item of data.items) if (!playedIds.has(item.videoId)) merged.set(item.videoId, item);
     items = [...merged.values()].sort((a, b) => new Date(b.published) - new Date(a.published)).slice(0, 300);
-    try { localStorage.setItem(QUEUE_STORAGE, JSON.stringify(items)); } catch (error) { log('queue cache error', String(error)); }
+    persistQueue();
     const restoredIndex = items.findIndex(item => item.videoId === previousId);
-    index = restoredIndex >= 0 ? restoredIndex : 0;
+    index = restoredIndex >= 0 ? restoredIndex : Math.min(index, Math.max(0, items.length - 1));
     render();
     $('feed-summary').textContent = `${items.length} queued · ${data.items.length} fetched · ${failedSources.length} source errors.`;
     $('source-status').replaceChildren(...(data.sources || []).map(source => { const li = document.createElement('li'); li.textContent = `${source.name}: ${source.count} videos${source.error ? ' — ' + source.error : ''}`; return li; }));
