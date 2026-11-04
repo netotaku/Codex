@@ -19,7 +19,8 @@
   #queue { list-style: decimal; padding-left: 2rem; }
   #queue li { padding: .2rem; }
   #queue li.selected { background: #dce7f5; }
-  #queue li button { border: 0; background: transparent; text-decoration: underline; text-align: left; cursor: pointer; padding: .5rem; width: 100%; }
+  #queue li button { display: block; border: 0; background: transparent; color: LinkText; text-decoration: underline; text-align: left; cursor: pointer; padding: .25rem 0; width: 100%; font: inherit; }
+  #queue li .channel { display: block; font-size: .85em; margin-top: .15rem; }
   #queue li.selected button { font-weight: bold; }
   #error { color: #9a1d1d; }
   pre { font-size: .8rem; }
@@ -34,7 +35,7 @@
     <button id="toggle">Play</button>
     <button id="next">Next →</button>
   </div>
-  <h2>Queue (<span id="count">0</span>)</h2>
+  <h2>Queue</h2>
   <ol id="queue"></ol>
   <h2 id="title" hidden>Waiting for videos</h2>
   <p id="details" hidden></p>
@@ -71,7 +72,7 @@ function save(force = false) {
 }
 function render() {
   const current = items[index];
-  $('count').textContent = String(items.length);
+
   $('title').textContent = current?.title || 'No videos available';
   $('details').textContent = current ? `${current.source} · ${new Date(current.published).toLocaleString()}` : '';
   $('queue').replaceChildren(...items.map((item, i) => {
@@ -80,7 +81,10 @@ function render() {
     const button = document.createElement('button');
     button.textContent = item.title;
     button.addEventListener('click', () => go(i));
-    li.append(button);
+    const channel = document.createElement('span');
+    channel.className = 'channel';
+    channel.textContent = item.source;
+    li.append(button, channel);
     return li;
   }));
 }
