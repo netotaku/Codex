@@ -17,7 +17,7 @@
   button { font: inherit; min-height: 44px; }
   .controls button { flex: 1; }
   #queue { list-style: decimal; padding-left: 2rem; }
-  #queue li { padding: .2rem .2rem 1em; }
+  #queue li { padding: .2rem; margin-bottom: 1em; }
   #queue li.selected { background: #dce7f5; }
   #queue li a { display: inline; color: LinkText; text-decoration: underline; text-align: left; font: inherit; padding: .25rem 0; overflow-wrap: anywhere; }
   #queue li .channel { display: inline; font-size: .8em; margin-top: .15rem; }
@@ -32,9 +32,9 @@
   <p id="error" role="alert" hidden></p>
   <div id="player" style="width:100%;aspect-ratio:16/9;max-width:900px;background:#ddd"></div>
   <div class="controls">
-    <button id="previous">← Prev</button>
+    <button id="previous">Previous</button>
     <button id="toggle">Play</button>
-    <button id="next">Next →</button>
+    <button id="next">Next</button>
   </div>
   <h2>Queue</h2>
   <ol id="queue"></ol>
