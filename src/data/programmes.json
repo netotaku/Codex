@@ -31,5 +31,16 @@
     "source": "user-approved",
     "episodes": [],
     "links": []
+  },
+  {
+    "id": "uncanny",
+    "name": "Uncanny",
+    "creator": "Danny Robins / BBC",
+    "type": "paranormal investigation podcast",
+    "collection": "Radio & Podcasts",
+    "status": "accepted",
+    "source": "user-approved",
+    "episodes": [],
+    "links": []
   }
 ]
