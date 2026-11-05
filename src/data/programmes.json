@@ -9,5 +9,16 @@
     "source": "user-approved",
     "episodes": [],
     "links": []
+  },
+  {
+    "id": "the-missing-cryptoqueen",
+    "name": "The Missing Cryptoqueen",
+    "creator": "BBC",
+    "type": "investigative podcast",
+    "collection": "Radio & Podcasts",
+    "status": "accepted",
+    "source": "user-approved",
+    "episodes": [],
+    "links": []
   }
 ]
