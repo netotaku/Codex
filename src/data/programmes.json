@@ -20,5 +20,16 @@
     "source": "user-approved",
     "episodes": [],
     "links": []
+  },
+  {
+    "id": "the-lazarus-heist",
+    "name": "The Lazarus Heist",
+    "creator": "BBC World Service",
+    "type": "investigative podcast",
+    "collection": "Radio & Podcasts",
+    "status": "accepted",
+    "source": "user-approved",
+    "episodes": [],
+    "links": []
   }
 ]
