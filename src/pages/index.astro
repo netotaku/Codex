@@ -1,273 +1,68 @@
 ---
-// MVP: deliberately unstyled. All playback runs in a single persistent iframe.
+import selectors from '../data/selectors.json';
+const categories = [...new Set(selectors.map(item => item.category))];
 ---
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Personal Broadcast — Playback Test</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#f4eee0" />
+<meta name="description" content="Easy Listening: an evolving collection of DJs, selectors and interesting things worth hearing." />
+<title>Easy Listening — A collection in progress</title>
 <style>
-  html { font-family: Arial, Helvetica, sans-serif; font-size: 144%; line-height: 1.5; }
-  body { margin: 0; }
-  main { max-width: 900px; margin: auto; padding: 0.75rem; }
-  #player, #player iframe { width: 100%; max-width: 100%; }
-  .controls { display: flex; gap: .5rem; margin: 1rem 0; }
-  button { font: inherit; min-height: 44px; }
-  .controls button { flex: 1; }
-  #queue { list-style: decimal; padding-left: 2rem; }
-  #queue > li { display: list-item; padding: .25rem .5rem; margin: 0; box-sizing: border-box; }
-  #queue li p { margin: 0 0 1em; }
-  #queue li.selected { background: #dce7f5; }
-  #queue li a { display: inline; color: LinkText; text-decoration: underline; text-align: left; font: inherit; padding: .25rem 0; overflow-wrap: anywhere; }
-  #queue li .channel { display: inline; }
-  #queue li .published { display: inline; }
-  #queue li .metadata { display: block; font-size: .8em; line-height: 1.1; margin-bottom: .25em; }
-  #queue li.selected a { font-weight: bold; }
-  #error { color: #9a1d1d; }
-  pre { font-size: .8rem; }
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{font-family:'DM Sans',sans-serif;color:#26261d;background:#f4eee0;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}a{color:inherit}button,input{font:inherit}
+header{padding:24px clamp(22px,5vw,80px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #28291f30}
+.wordmark{font:700 clamp(23px,3vw,35px)/.94 'Space Grotesk',sans-serif;letter-spacing:-.075em;text-decoration:none}.wordmark span{display:block}
+header .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+main{max-width:1500px;margin:auto;padding:0 clamp(22px,5vw,80px) 90px}
+.hero{padding:clamp(65px,10vw,155px) 0 65px;display:grid;grid-template-columns:1.4fr .6fr;gap:40px;align-items:end}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+h1{font:700 clamp(68px,12vw,190px)/.82 'Space Grotesk',sans-serif;letter-spacing:-.095em;margin:22px 0 0;max-width:950px}
+.hero p{font-size:clamp(17px,2vw,23px);line-height:1.4;max-width:340px;margin:0 0 7px}
+.orb{height:16px;width:16px;border-radius:50%;background:#eb5b22;display:inline-block;margin-right:8px}
+.intro{border-top:2px solid #28291f;padding:20px 0 38px;display:flex;justify-content:space-between;gap:20px;align-items:baseline}
+.intro h2{font:700 clamp(26px,4vw,48px)/1 'Space Grotesk',sans-serif;letter-spacing:-.05em;margin:0}
+.intro p{max-width:450px;margin:0;color:#56574b;line-height:1.5}
+.controls{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:30px;align-items:center}
+.filter{background:transparent;border:1px solid #8b8c7e;border-radius:30px;padding:10px 15px;cursor:pointer;color:#303127}
+.filter[aria-pressed="true"],.filter:hover{background:#273c2f;color:#fff;border-color:#273c2f}
+.search{margin-left:auto;border:1px solid #8b8c7e;border-radius:30px;background:transparent;padding:10px 16px;min-width:220px;max-width:100%}
+.count{font-size:13px;color:#66685a;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{min-height:180px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:#e5dfd0;border-radius:3px}
+.card:nth-child(5n+2){background:#e5a64f}.card:nth-child(7n+4){background:#b5bd9e}.card:nth-child(11n+7){background:#d7a7a1}
+.card h3{font:700 clamp(22px,2.8vw,39px)/1.05 'Space Grotesk',sans-serif;letter-spacing:-.055em;margin:15px 0}
+.card small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.card footer{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#3c3c34}
+.empty{display:none;padding:30px 0}body.no-results .empty{display:block}
+.bottom{margin-top:90px;padding-top:20px;border-top:2px solid #28291f;display:flex;justify-content:space-between;gap:20px;font-size:14px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero p{max-width:550px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{display:block}.intro p{margin-top:15px}}
+@media(max-width:580px){header .tag{display:none}.hero{padding:75px 0 50px}h1{font-size:clamp(62px,15vw,95px)}.grid{grid-template-columns:1fr}.card{min-height:150px}.search{margin:8px 0 0;width:100%}.bottom{display:block}}
 </style>
 </head>
 <body>
+<header><a class="wordmark" href="/" aria-label="Easy Listening home"><span>easy</span><span>listening.</span></a><span class="tag">A place to find your next listen</span></header>
 <main>
-  <p id="error" role="alert" hidden></p>
-  <div id="player" style="width:100%;aspect-ratio:16/9;max-width:900px;background:#ddd"></div>
-  <div class="controls">
-    <button id="previous">Prev</button>
-    <button id="toggle">Play</button>
-    <button id="next">Next</button>
-  </div>
-  <h2>Queue</h2>
-  <ol id="queue"></ol>
-  <h2 id="title" hidden>Waiting for videos</h2>
-  <p id="details" hidden></p>
-  <label hidden>Position <input id="seek" type="range" min="0" max="1000" value="0" /></label>
-  <span id="time" hidden>0:00 / 0:00</span>
-  <details><summary>Diagnostics</summary><p id="feed-summary"></p><ul id="source-status"></ul><button id="refresh">Refresh feeds</button> <button id="clear-log">Clear log</button><pre id="log" style="white-space:pre-wrap;max-height:300px;overflow:auto"></pre></details>
+<section class="hero"><div><div class="eyebrow"><span class="orb"></span>Independent curiosity, no algorithm</div><h1>Good things<br/>to hear.</h1></div><p>A growing collection of selectors, sounds and rabbit holes. Collected because they're interesting, not because they're trending.</p></section>
+<section class="intro"><h2>The collection <span style="color:#e75c25">/ 001</span></h2><p>Starting with DJs and selectors. These are leads to explore, not rankings or endorsements. The mixes come next.</p></section>
+<div class="controls" role="group" aria-label="Filter collection">
+<button class="filter" data-category="all" aria-pressed="true">Everything</button>
+{categories.map(category=><button class="filter" data-category={category} aria-pressed="false">{category}</button>)}
+<input class="search" type="search" placeholder="Find a name…" aria-label="Search the collection" />
+</div>
+<p class="count" id="count">{selectors.length} names to explore</p>
+<div class="grid" id="grid">
+{selectors.map(item=><article class="card" data-category={item.category} data-name={item.name.toLowerCase()}><small>{item.category}</small><h3>{item.name}</h3><footer><span>{item.origin==='user-seed'?'Starting point':'Suggested discovery'}</span><span>↗ Explore soon</span></footer></article>)}
+</div>
+<p class="empty">Nothing here yet. Try a different search.</p>
+<div class="bottom"><strong>Easy Listening</strong><span>Made for curiosity. The collection is just getting started.</span></div>
 </main>
 <script>
-const $ = (id) => document.getElementById(id);
-const STORAGE = 'personal-broadcast-v1';
-const QUEUE_STORAGE = 'personal-broadcast-queue-v1';
-const readQueue = () => { try { const value = JSON.parse(localStorage.getItem(QUEUE_STORAGE) || '[]'); return Array.isArray(value) ? value : []; } catch { return []; } };
-let items = readQueue(), index = 0, player, ready = false, started = false, isSeeking = false;
-let lastSavedAt = 0;
-const HISTORY_STORAGE = 'personal-broadcast-history-v1';
-const readHistory = () => { try { const value = JSON.parse(localStorage.getItem(HISTORY_STORAGE) || '[]'); return Array.isArray(value) ? value : []; } catch { return []; } };
-let history = readHistory();
-const persistQueue = () => { try { localStorage.setItem(QUEUE_STORAGE, JSON.stringify(items)); localStorage.setItem(HISTORY_STORAGE, JSON.stringify(history)); } catch (error) { log('queue cache error', String(error)); } };
-const stored = (() => { try { return JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch { return {}; } })();
-const log = (event, detail = '') => {
-  const line = new Date().toLocaleTimeString() + ' ' + event + (detail ? ' ' + detail : '');
-  $('log').textContent = (line + '\n' + $('log').textContent).slice(0, 12000);
-  console.info('[broadcast]', line);
-};
-const setStatus = (value) => { log(value); };
-const showError = (message) => { $('error').hidden = !message; $('error').textContent = message; };
-const format = (seconds) => { const s = Math.max(0, Math.floor(Number(seconds) || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
-function save(force = false) {
-  if (!force && Date.now() - lastSavedAt < 4000) return;
-  lastSavedAt = Date.now();
-  try {
-    localStorage.setItem(STORAGE, JSON.stringify({
-      videoId: items[index]?.videoId, index,
-      position: ready && player?.getCurrentTime ? player.getCurrentTime() : 0,
-      updated: Date.now()
-    }));
-  } catch (error) { log('storage error', String(error)); }
-}
-function render() {
-  const current = items[index];
-
-  $('title').textContent = current?.title || 'No videos available';
-  $('details').textContent = current ? `${current.source} · ${new Date(current.published).toLocaleString()}` : '';
-  $('queue').replaceChildren(...items.map((item, i) => {
-    const li = document.createElement('li');
-    if (i === index) { li.className = 'selected'; li.setAttribute('aria-current', 'true'); }
-    const metadata = document.createElement('small');
-    metadata.className = 'metadata';
-    metadata.style.cssText = 'display:block;font-size:.8em;line-height:1.1;margin-bottom:.25em';
-    const published = document.createElement('span');
-    published.className = 'published';
-    published.style.display = 'block';
-    const date = new Date(item.published);
-    published.textContent = Number.isNaN(date.getTime()) ? '' : date.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
-    const link = document.createElement('a');
-    link.href = '#player';
-    link.textContent = item.title;
-    link.addEventListener('click', (event) => { event.preventDefault(); go(i); });
-    const channel = document.createElement('span');
-    channel.className = 'channel';
-    channel.style.display = 'block';
-    const bold = document.createElement('b');
-    bold.textContent = item.source;
-    channel.append(bold);
-    const paragraph = document.createElement('p');
-    metadata.append(published, channel);
-    paragraph.append(metadata, link);
-    li.append(paragraph);
-    return li;
-  }));
-}
-function go(nextIndex) {
-  if (!items.length || nextIndex < 0 || nextIndex >= items.length) return;
-  index = nextIndex;
-  showError('');
-  render();
-  save(true);
-  if (ready) {
-    player.loadVideoById(items[index].videoId);
-    log('loadVideoById', items[index].videoId);
-  }
-}
-function next() {
-  if (!items.length) return;
-  const current = items[index];
-  if (current) history.push(current);
-  // The current video leaves the visible queue when moving forward.
-  items.splice(index, 1);
-  if (index >= items.length) index = Math.max(0, items.length - 1);
-  persistQueue();
-  if (items.length) go(index);
-  else { render(); showError('Fetching more videos…'); }
-  // Replenish the queue as soon as a video is removed.
-  loadFeed();
-}
-function previous() {
-  if (!history.length) return;
-  const restored = history.pop();
-  items.unshift(restored);
-  index = 0;
-  persistQueue();
-  go(0);
-  // Focus the restored item without jumping away from the player.
-  $('queue').querySelector('li.selected a')?.focus({ preventScroll: true });
-}
-function toggle() {
-  if (!ready) return;
-  const state = player.getPlayerState();
-  if (state === YT.PlayerState.PLAYING) player.pauseVideo();
-  else player.playVideo();
-}
-async function loadFeed() {
-  setStatus('Fetching public channel feeds…');
-  try {
-    const response = await fetch('/.netlify/functions/feed', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Feed HTTP ' + response.status);
-    const data = await response.json();
-    if (!Array.isArray(data.items)) throw new Error('Invalid feed response');
-    const previousId = items[index]?.videoId || stored.videoId;
-    const failedSources = (data.sources || []).filter(source => source.error);
-    // Keep previously loaded items when a public feed fails temporarily.
-    // A refresh must never replace a populated queue with a partial result.
-    const playedIds = new Set(history.map(item => item.videoId));
-    const merged = new Map(items.filter(item => !playedIds.has(item.videoId)).map(item => [item.videoId, item]));
-    for (const item of data.items) if (!playedIds.has(item.videoId)) merged.set(item.videoId, item);
-    items = [...merged.values()].sort((a, b) => new Date(b.published) - new Date(a.published)).slice(0, 300);
-    persistQueue();
-    const restoredIndex = items.findIndex(item => item.videoId === previousId);
-    index = restoredIndex >= 0 ? restoredIndex : Math.min(index, Math.max(0, items.length - 1));
-    render();
-    $('feed-summary').textContent = `${items.length} queued · ${data.items.length} fetched · ${failedSources.length} source errors.`;
-    $('source-status').replaceChildren(...(data.sources || []).map(source => { const li = document.createElement('li'); li.textContent = `${source.name}: ${source.count} videos${source.error ? ' — ' + source.error : ''}`; return li; }));
-    if (items.length) showError('');
-    for (const source of data.sources || []) if (source.error) log('source unavailable: ' + source.name, source.error);
-    if (!items.length) showError('No videos available. See Diagnostics for feed errors.');
-    // Refreshing the feed should not restart a video already playing.
-    if (ready && items.length && !player.getVideoData()?.video_id) player.cueVideoById(items[index].videoId);
-  } catch (error) {
-    showError('Feed unavailable. See Diagnostics.');
-    $('feed-summary').textContent = error.message;
-  }
-}
-function initPlayer() {
-  player = new YT.Player('player', {
-    width: '900', height: '506',
-    videoId: items[index]?.videoId || '',
-    playerVars: { playsinline: 1, rel: 0, origin: location.origin },
-    events: {
-      onReady: () => {
-        ready = true; log('player ready');
-        player.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-        if (items.length && stored.videoId === items[index]?.videoId && stored.position > 0) {
-          player.cueVideoById({ videoId: items[index].videoId, startSeconds: stored.position });
-          log('restored position', format(stored.position));
-        }
-      },
-      onStateChange: (event) => {
-        const states = { '-1':'unstarted', 0:'ended', 1:'playing', 2:'paused', 3:'buffering', 5:'cued' };
-        log('player state', states[event.data] || event.data);
-        $('toggle').textContent = event.data === YT.PlayerState.PLAYING ? 'Pause' : 'Play';
-        if (event.data === YT.PlayerState.PLAYING) showError('');
-        if (event.data === YT.PlayerState.ENDED) next();
-        if (event.data === YT.PlayerState.PAUSED) save(true);
-      },
-      onError: (event) => {
-        log('player error', String(event.data));
-        if (event.data === 153) showError('YouTube playback error 153. Tap Play to retry.');
-        else if (event.data === 101 || event.data === 150) showError('Video cannot be embedded. Try Next.');
-        else showError('Playback error ' + event.data + '. Tap Play to retry.');
-      },
-      onAutoplayBlocked: () => log('AUTOPLAY BLOCKED')
-    }
-  });
-}
-window.onYouTubeIframeAPIReady = initPlayer;
-const script = document.createElement('script');
-script.src = 'https://www.youtube.com/iframe_api';
-document.head.append(script);
-$('toggle').addEventListener('click', () => {
-  if (!items.length) { showError('No videos available. See Diagnostics.'); return; }
-  if (!ready) { showError('Player is loading. Try again shortly.'); return; }
-  const state = player.getPlayerState();
-  if (state === YT.PlayerState.PLAYING) player.pauseVideo();
-  else if (!started || state === YT.PlayerState.UNSTARTED || state === YT.PlayerState.CUED) {
-    started = true; player.loadVideoById(items[index].videoId);
-  } else { started = true; player.playVideo(); }
-});
-$('refresh').addEventListener('click', loadFeed);
-$('next').addEventListener('click', next);
-$('previous').addEventListener('click', previous);
-
-$('clear-log').addEventListener('click', () => { $('log').textContent = ''; });
-$('seek').addEventListener('pointerdown', () => { isSeeking = true; });
-$('seek').addEventListener('input', () => { isSeeking = true; });
-$('seek').addEventListener('change', () => {
-  if (ready) player.seekTo(Number($('seek').value) / 1000 * (player.getDuration() || 0), true);
-  isSeeking = false;
-});
-setInterval(() => {
-  if (!ready) return;
-  const duration = player.getDuration() || 0;
-  const current = player.getCurrentTime() || 0;
-  $('time').textContent = format(current) + ' / ' + format(duration);
-  if (!isSeeking && duration) $('seek').value = String(Math.round(current / duration * 1000));
-  if (player.getPlayerState() === YT.PlayerState.PLAYING) save();
-}, 1000);
-document.addEventListener('visibilitychange', () => { log('visibility', document.visibilityState); save(true); });
-window.addEventListener('pagehide', () => { log('pagehide'); save(true); });
-window.addEventListener('pageshow', (e) => log('pageshow', e.persisted ? 'bfcache' : 'normal'));
-let touchStart = null;
-document.addEventListener('touchstart', (e) => {
-  if (e.target.closest('button, input, details, #player')) return;
-  const t = e.changedTouches[0];
-  touchStart = { x:t.clientX, y:t.clientY };
-}, { passive:true });
-document.addEventListener('touchend', (e) => {
-  if (!touchStart) return;
-  const t = e.changedTouches[0];
-  const dx = t.clientX - touchStart.x, dy = t.clientY - touchStart.y;
-  touchStart = null;
-  if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.5) dx > 0 ? next() : previous();
-}, { passive:true });
-document.addEventListener('keydown', (e) => {
-  if (e.target instanceof HTMLInputElement) return;
-  if (e.key === 'ArrowRight') next();
-  if (e.key === 'ArrowLeft') previous();
-});
-if (items.length) { index = Math.max(0, items.findIndex(item => item.videoId === stored.videoId)); render(); setStatus(`${items.length} cached videos; refreshing sources…`); }
-loadFeed();
+const buttons=[...document.querySelectorAll('.filter')],cards=[...document.querySelectorAll('.card')],search=document.querySelector('.search'),count=document.querySelector('#count');let category='all';
+function update(){const query=search.value.trim().toLowerCase();let visible=0;for(const card of cards){const match=(category==='all'||card.dataset.category===category)&&card.dataset.name.includes(query);card.hidden=!match;if(match)visible++}count.textContent=visible+' names to explore';document.body.classList.toggle('no-results',visible===0)}
+buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.category;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));update()}));search.addEventListener('input',update);
 </script>
-</body>
-</html>
+</body></html>

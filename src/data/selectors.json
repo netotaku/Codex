@@ -1,0 +1,612 @@
+[
+  {
+    "id": "dj-shadow",
+    "name": "DJ Shadow",
+    "category": "Hip-hop & turntablism",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-jazzy-jeff",
+    "name": "DJ Jazzy Jeff",
+    "category": "Hip-hop & turntablism",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "maseo",
+    "name": "Maseo",
+    "category": "Hip-hop & turntablism",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "Likely the De La Soul DJ referred to in the initial conversation.",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-premier",
+    "name": "DJ Premier",
+    "category": "Hip-hop & turntablism",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "cut-chemist",
+    "name": "Cut Chemist",
+    "category": "Hip-hop & turntablism",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-yoda",
+    "name": "DJ Yoda",
+    "category": "Hip-hop & turntablism",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-cam",
+    "name": "DJ Cam",
+    "category": "Hip-hop & turntablism",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-krush",
+    "name": "DJ Krush",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-format",
+    "name": "DJ Format",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-nu-mark",
+    "name": "DJ Nu-Mark",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-food",
+    "name": "DJ Food",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "kid-koala",
+    "name": "Kid Koala",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "mix-master-mike",
+    "name": "Mix Master Mike",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-qbert",
+    "name": "DJ Qbert",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-spinna",
+    "name": "DJ Spinna",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-koco-aka-shimokita",
+    "name": "DJ Koco aka Shimokita",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-babu",
+    "name": "DJ Babu",
+    "category": "Hip-hop & turntablism",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "mark-archer",
+    "name": "Mark Archer",
+    "category": "Breaks, big beat & electro",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "krafty-kuts",
+    "name": "Krafty Kuts",
+    "category": "Breaks, big beat & electro",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "mr-oizo",
+    "name": "Mr Oizo",
+    "category": "Breaks, big beat & electro",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "a-skillz",
+    "name": "A.Skillz",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "plump-djs",
+    "name": "Plump DJs",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "stanton-warriors",
+    "name": "Stanton Warriors",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "freestylers",
+    "name": "Freestylers",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "freddy-fresh",
+    "name": "Freddy Fresh",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "evil-nine",
+    "name": "Evil Nine",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "adam-freeland",
+    "name": "Adam Freeland",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "the-wiseguys",
+    "name": "The Wiseguys",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "2manydjs-soulwax",
+    "name": "2ManyDJs / Soulwax",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "erol-alkan",
+    "name": "Erol Alkan",
+    "category": "Breaks, big beat & electro",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "break",
+    "name": "Break",
+    "category": "Jungle & drum and bass",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "ltj-bukem",
+    "name": "LTJ Bukem",
+    "category": "Jungle & drum and bass",
+    "origin": "user-seed",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "nookie",
+    "name": "Nookie",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "peshay",
+    "name": "Peshay",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-crystl",
+    "name": "DJ Crystl",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "fabio",
+    "name": "Fabio",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "grooverider",
+    "name": "Grooverider",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "doc-scott",
+    "name": "Doc Scott",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "calibre",
+    "name": "Calibre",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-marky",
+    "name": "DJ Marky",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "a-guy-called-gerald",
+    "name": "A Guy Called Gerald",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "omni-trio",
+    "name": "Omni Trio",
+    "category": "Jungle & drum and bass",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-assault",
+    "name": "DJ Assault",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "Possible lead for the unidentified ghettotech DJ; not confirmed.",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-godfather",
+    "name": "DJ Godfather",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "Possible lead for the unidentified ghettotech DJ; not confirmed.",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-deeon",
+    "name": "DJ Deeon",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "Possible lead for the unidentified ghettotech DJ; not confirmed.",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-funk",
+    "name": "DJ Funk",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "Possible lead for the unidentified ghettotech DJ; not confirmed.",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-stingray-313",
+    "name": "DJ Stingray 313",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-bone",
+    "name": "DJ Bone",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "jeff-mills",
+    "name": "Jeff Mills",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-rolando",
+    "name": "DJ Rolando",
+    "category": "Detroit, ghettotech & house",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "andrew-weatherall",
+    "name": "Andrew Weatherall",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "david-holmes",
+    "name": "David Holmes",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "gilles-peterson",
+    "name": "Gilles Peterson",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "mr-scruff",
+    "name": "Mr Scruff",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "bonobo",
+    "name": "Bonobo",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "nightmares-on-wax",
+    "name": "Nightmares on Wax",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "dj-harvey",
+    "name": "DJ Harvey",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "optimo",
+    "name": "Optimo",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "the-avalanches",
+    "name": "The Avalanches",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "coldcut",
+    "name": "Coldcut",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  },
+  {
+    "id": "james-lavelle",
+    "name": "James Lavelle",
+    "category": "Eclectic selectors",
+    "origin": "assistant-suggestion",
+    "status": "to-explore",
+    "notes": "",
+    "mixes": [],
+    "links": []
+  }
+]
