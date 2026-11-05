@@ -1,0 +1,286 @@
+[
+  {
+    "id": "dj-shadow",
+    "name": "DJ Shadow"
+  },
+  {
+    "id": "dj-jazzy-jeff",
+    "name": "DJ Jazzy Jeff"
+  },
+  {
+    "id": "maseo",
+    "name": "Maseo"
+  },
+  {
+    "id": "dj-premier",
+    "name": "DJ Premier"
+  },
+  {
+    "id": "cut-chemist",
+    "name": "Cut Chemist"
+  },
+  {
+    "id": "dj-yoda",
+    "name": "DJ Yoda"
+  },
+  {
+    "id": "dj-cam",
+    "name": "DJ Cam"
+  },
+  {
+    "id": "dj-krush",
+    "name": "DJ Krush"
+  },
+  {
+    "id": "dj-format",
+    "name": "DJ Format"
+  },
+  {
+    "id": "dj-nu-mark",
+    "name": "DJ Nu-Mark"
+  },
+  {
+    "id": "dj-food",
+    "name": "DJ Food"
+  },
+  {
+    "id": "kid-koala",
+    "name": "Kid Koala"
+  },
+  {
+    "id": "mix-master-mike",
+    "name": "Mix Master Mike"
+  },
+  {
+    "id": "dj-qbert",
+    "name": "DJ Qbert"
+  },
+  {
+    "id": "dj-spinna",
+    "name": "DJ Spinna"
+  },
+  {
+    "id": "dj-koco-aka-shimokita",
+    "name": "DJ Koco aka Shimokita"
+  },
+  {
+    "id": "dj-babu",
+    "name": "DJ Babu"
+  },
+  {
+    "id": "mark-archer",
+    "name": "Mark Archer"
+  },
+  {
+    "id": "krafty-kuts",
+    "name": "Krafty Kuts"
+  },
+  {
+    "id": "mr-oizo",
+    "name": "Mr Oizo"
+  },
+  {
+    "id": "a-skillz",
+    "name": "A.Skillz"
+  },
+  {
+    "id": "plump-djs",
+    "name": "Plump DJs"
+  },
+  {
+    "id": "stanton-warriors",
+    "name": "Stanton Warriors"
+  },
+  {
+    "id": "freestylers",
+    "name": "Freestylers"
+  },
+  {
+    "id": "freddy-fresh",
+    "name": "Freddy Fresh"
+  },
+  {
+    "id": "evil-nine",
+    "name": "Evil Nine"
+  },
+  {
+    "id": "adam-freeland",
+    "name": "Adam Freeland"
+  },
+  {
+    "id": "the-wiseguys",
+    "name": "The Wiseguys"
+  },
+  {
+    "id": "2manydjs-soulwax",
+    "name": "2ManyDJs / Soulwax"
+  },
+  {
+    "id": "erol-alkan",
+    "name": "Erol Alkan"
+  },
+  {
+    "id": "break",
+    "name": "Break"
+  },
+  {
+    "id": "ltj-bukem",
+    "name": "LTJ Bukem"
+  },
+  {
+    "id": "nookie",
+    "name": "Nookie"
+  },
+  {
+    "id": "peshay",
+    "name": "Peshay"
+  },
+  {
+    "id": "dj-crystl",
+    "name": "DJ Crystl"
+  },
+  {
+    "id": "fabio",
+    "name": "Fabio"
+  },
+  {
+    "id": "grooverider",
+    "name": "Grooverider"
+  },
+  {
+    "id": "doc-scott",
+    "name": "Doc Scott"
+  },
+  {
+    "id": "calibre",
+    "name": "Calibre"
+  },
+  {
+    "id": "dj-marky",
+    "name": "DJ Marky"
+  },
+  {
+    "id": "a-guy-called-gerald",
+    "name": "A Guy Called Gerald"
+  },
+  {
+    "id": "omni-trio",
+    "name": "Omni Trio"
+  },
+  {
+    "id": "dj-assault",
+    "name": "DJ Assault"
+  },
+  {
+    "id": "dj-godfather",
+    "name": "DJ Godfather"
+  },
+  {
+    "id": "dj-deeon",
+    "name": "DJ Deeon"
+  },
+  {
+    "id": "dj-funk",
+    "name": "DJ Funk"
+  },
+  {
+    "id": "dj-stingray-313",
+    "name": "DJ Stingray 313"
+  },
+  {
+    "id": "dj-bone",
+    "name": "DJ Bone"
+  },
+  {
+    "id": "jeff-mills",
+    "name": "Jeff Mills"
+  },
+  {
+    "id": "dj-rolando",
+    "name": "DJ Rolando"
+  },
+  {
+    "id": "andrew-weatherall",
+    "name": "Andrew Weatherall"
+  },
+  {
+    "id": "david-holmes",
+    "name": "David Holmes"
+  },
+  {
+    "id": "gilles-peterson",
+    "name": "Gilles Peterson"
+  },
+  {
+    "id": "mr-scruff",
+    "name": "Mr Scruff"
+  },
+  {
+    "id": "bonobo",
+    "name": "Bonobo"
+  },
+  {
+    "id": "nightmares-on-wax",
+    "name": "Nightmares on Wax"
+  },
+  {
+    "id": "dj-harvey",
+    "name": "DJ Harvey"
+  },
+  {
+    "id": "optimo",
+    "name": "Optimo"
+  },
+  {
+    "id": "the-avalanches",
+    "name": "The Avalanches"
+  },
+  {
+    "id": "coldcut",
+    "name": "Coldcut"
+  },
+  {
+    "id": "james-lavelle",
+    "name": "James Lavelle"
+  },
+  {
+    "id": "stephen-merchant",
+    "name": "Stephen Merchant"
+  },
+  {
+    "id": "adam-buxton",
+    "name": "Adam Buxton"
+  },
+  {
+    "id": "adam-curtis",
+    "name": "Adam Curtis"
+  },
+  {
+    "id": "richard-osman",
+    "name": "Richard Osman"
+  },
+  {
+    "id": "romesh-ranganathan",
+    "name": "Romesh Ranganathan"
+  },
+  {
+    "id": "billy-corgan",
+    "name": "Billy Corgan"
+  },
+  {
+    "id": "stewart-lee",
+    "name": "Stewart Lee"
+  },
+  {
+    "id": "jon-ronson",
+    "name": "Jon Ronson"
+  },
+  {
+    "id": "david-sedaris",
+    "name": "David Sedaris"
+  },
+  {
+    "id": "simon-pegg",
+    "name": "Simon Pegg"
+  }
+]
