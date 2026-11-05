@@ -86,5 +86,16 @@
     "source": "user-approved",
     "episodes": [],
     "links": []
+  },
+  {
+    "id": "a-very-british-cult",
+    "name": "A Very British Cult",
+    "creator": "Catrin Nye / BBC",
+    "type": "investigative documentary podcast",
+    "collection": "Radio & Podcasts",
+    "status": "accepted",
+    "source": "user-approved",
+    "episodes": [],
+    "links": []
   }
 ]
