@@ -108,5 +108,16 @@
     "source": "user-approved",
     "episodes": [],
     "links": []
+  },
+  {
+    "id": "the-ratline",
+    "name": "The Ratline",
+    "creator": "Philippe Sands / BBC Radio 4",
+    "type": "historical investigative podcast",
+    "collection": "Radio & Podcasts",
+    "status": "accepted",
+    "source": "user-approved",
+    "episodes": [],
+    "links": []
   }
 ]
