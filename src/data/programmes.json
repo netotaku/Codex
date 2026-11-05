@@ -42,5 +42,16 @@
     "source": "user-approved",
     "episodes": [],
     "links": []
+  },
+  {
+    "id": "archive-on-4",
+    "name": "Archive on 4",
+    "creator": "BBC Radio 4",
+    "type": "documentary anthology",
+    "collection": "Radio & Podcasts",
+    "status": "accepted",
+    "source": "user-approved",
+    "episodes": [],
+    "links": []
   }
 ]
