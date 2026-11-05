@@ -1,6 +1,6 @@
 ---
-import selectors from '../data/selectors.json';
-const names = [...selectors].sort((a,b) => a.name.localeCompare(b.name));
+import people from '../data/people.json';
+const names = [...people].sort((a,b) => a.name.localeCompare(b.name));
 ---
 <!doctype html>
 <html lang="en">
@@ -30,7 +30,7 @@ main{padding:0 clamp(22px,6vw,90px) 100px;max-width:1700px;margin:auto}
 <body>
 <header><a class="logo" href="/" aria-label="Easy Listening"><span>easy</span><span>listening.</span></a></header>
 <main>
-<nav class="tabs" aria-label="Collections"><span class="tab" aria-current="page">DJs &amp; selectors <span>{names.length}</span></span></nav>
+<nav class="tabs" aria-label="Collections"><span class="tab" aria-current="page">People <span>{names.length}</span></span></nav>
 <ul class="list">{names.map(item=><li>{item.name}</li>)}</ul>
 </main>
 </body>
