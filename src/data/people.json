@@ -282,5 +282,21 @@
   {
     "id": "simon-pegg",
     "name": "Simon Pegg"
+  },
+  {
+    "id": "james-o-brien",
+    "name": "James O'Brien"
+  },
+  {
+    "id": "emily-maitlis",
+    "name": "Emily Maitlis"
+  },
+  {
+    "id": "jon-sopel",
+    "name": "Jon Sopel"
+  },
+  {
+    "id": "lewis-goodall",
+    "name": "Lewis Goodall"
   }
 ]
