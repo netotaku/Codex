@@ -1,6 +1,6 @@
 ---
 import selectors from '../data/selectors.json';
-const categories = [...new Set(selectors.map(item => item.category))];
+const names = [...selectors].sort((a,b) => a.name.localeCompare(b.name));
 ---
 <!doctype html>
 <html lang="en">
@@ -8,61 +8,30 @@ const categories = [...new Set(selectors.map(item => item.category))];
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#f4eee0" />
-<meta name="description" content="Easy Listening: an evolving collection of DJs, selectors and interesting things worth hearing." />
-<title>Easy Listening — A collection in progress</title>
+<title>Easy Listening</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-:root{font-family:'DM Sans',sans-serif;color:#26261d;background:#f4eee0;font-synthesis:none}
-*{box-sizing:border-box}body{margin:0}a{color:inherit}button,input{font:inherit}
-header{padding:24px clamp(22px,5vw,80px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #28291f30}
-.wordmark{font:700 clamp(23px,3vw,35px)/.94 'Space Grotesk',sans-serif;letter-spacing:-.075em;text-decoration:none}.wordmark span{display:block}
-header .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-main{max-width:1500px;margin:auto;padding:0 clamp(22px,5vw,80px) 90px}
-.hero{padding:clamp(65px,10vw,155px) 0 65px;display:grid;grid-template-columns:1.4fr .6fr;gap:40px;align-items:end}
-.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
-h1{font:700 clamp(68px,12vw,190px)/.82 'Space Grotesk',sans-serif;letter-spacing:-.095em;margin:22px 0 0;max-width:950px}
-.hero p{font-size:clamp(17px,2vw,23px);line-height:1.4;max-width:340px;margin:0 0 7px}
-.orb{height:16px;width:16px;border-radius:50%;background:#eb5b22;display:inline-block;margin-right:8px}
-.intro{border-top:2px solid #28291f;padding:20px 0 38px;display:flex;justify-content:space-between;gap:20px;align-items:baseline}
-.intro h2{font:700 clamp(26px,4vw,48px)/1 'Space Grotesk',sans-serif;letter-spacing:-.05em;margin:0}
-.intro p{max-width:450px;margin:0;color:#56574b;line-height:1.5}
-.controls{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:30px;align-items:center}
-.filter{background:transparent;border:1px solid #8b8c7e;border-radius:30px;padding:10px 15px;cursor:pointer;color:#303127}
-.filter[aria-pressed="true"],.filter:hover{background:#273c2f;color:#fff;border-color:#273c2f}
-.search{margin-left:auto;border:1px solid #8b8c7e;border-radius:30px;background:transparent;padding:10px 16px;min-width:220px;max-width:100%}
-.count{font-size:13px;color:#66685a;margin:0 0 16px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.card{min-height:180px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:#e5dfd0;border-radius:3px}
-.card:nth-child(5n+2){background:#e5a64f}.card:nth-child(7n+4){background:#b5bd9e}.card:nth-child(11n+7){background:#d7a7a1}
-.card h3{font:700 clamp(22px,2.8vw,39px)/1.05 'Space Grotesk',sans-serif;letter-spacing:-.055em;margin:15px 0}
-.card small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
-.card footer{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#3c3c34}
-.empty{display:none;padding:30px 0}body.no-results .empty{display:block}
-.bottom{margin-top:90px;padding-top:20px;border-top:2px solid #28291f;display:flex;justify-content:space-between;gap:20px;font-size:14px}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.hero p{max-width:550px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{display:block}.intro p{margin-top:15px}}
-@media(max-width:580px){header .tag{display:none}.hero{padding:75px 0 50px}h1{font-size:clamp(62px,15vw,95px)}.grid{grid-template-columns:1fr}.card{min-height:150px}.search{margin:8px 0 0;width:100%}.bottom{display:block}}
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{font-family:'Space Grotesk',sans-serif;background:#f4eee0;color:#27271f;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0}
+header{padding:clamp(26px,5vw,70px) clamp(22px,6vw,90px) clamp(32px,5vw,75px);border-bottom:2px solid currentColor}
+.logo{font-size:clamp(76px,14vw,230px);font-weight:700;line-height:.76;letter-spacing:-.105em;display:inline-block;text-decoration:none;color:inherit}
+.logo span{display:block}
+main{padding:0 clamp(22px,6vw,90px) 100px;max-width:1700px;margin:auto}
+.tabs{display:flex;align-items:end;gap:35px;border-bottom:1px solid #777769;padding-top:28px;margin-bottom:40px}
+.tab{font:600 clamp(18px,2vw,27px)/1 'Space Grotesk',sans-serif;letter-spacing:-.045em;padding:0 0 18px;border:0;border-bottom:4px solid #e65d25;margin-bottom:-2px;background:none;color:inherit}
+.tab span{font-size:13px;vertical-align:top;margin-left:7px;letter-spacing:0}
+.list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:40px}
+.list li{font-size:clamp(18px,2vw,27px);font-weight:500;letter-spacing:-.04em;padding:15px 0;border-bottom:1px solid #b7b2a5;line-height:1.15}
+@media(max-width:800px){.list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 25px}}
+@media(max-width:520px){.logo{font-size:clamp(68px,16vw,110px)}.list{grid-template-columns:1fr}.tabs{margin-bottom:20px}}
 </style>
 </head>
 <body>
-<header><a class="wordmark" href="/" aria-label="Easy Listening home"><span>easy</span><span>listening.</span></a><span class="tag">A place to find your next listen</span></header>
+<header><a class="logo" href="/" aria-label="Easy Listening"><span>easy</span><span>listening.</span></a></header>
 <main>
-<section class="hero"><div><div class="eyebrow"><span class="orb"></span>Independent curiosity, no algorithm</div><h1>Good things<br/>to hear.</h1></div><p>A growing collection of selectors, sounds and rabbit holes. Collected because they're interesting, not because they're trending.</p></section>
-<section class="intro"><h2>The collection <span style="color:#e75c25">/ 001</span></h2><p>Starting with DJs and selectors. These are leads to explore, not rankings or endorsements. The mixes come next.</p></section>
-<div class="controls" role="group" aria-label="Filter collection">
-<button class="filter" data-category="all" aria-pressed="true">Everything</button>
-{categories.map(category=><button class="filter" data-category={category} aria-pressed="false">{category}</button>)}
-<input class="search" type="search" placeholder="Find a name…" aria-label="Search the collection" />
-</div>
-<p class="count" id="count">{selectors.length} names to explore</p>
-<div class="grid" id="grid">
-{selectors.map(item=><article class="card" data-category={item.category} data-name={item.name.toLowerCase()}><small>{item.category}</small><h3>{item.name}</h3><footer><span>{item.origin==='user-seed'?'Starting point':'Suggested discovery'}</span><span>↗ Explore soon</span></footer></article>)}
-</div>
-<p class="empty">Nothing here yet. Try a different search.</p>
-<div class="bottom"><strong>Easy Listening</strong><span>Made for curiosity. The collection is just getting started.</span></div>
+<nav class="tabs" aria-label="Collections"><span class="tab" aria-current="page">DJs &amp; selectors <span>{names.length}</span></span></nav>
+<ul class="list">{names.map(item=><li>{item.name}</li>)}</ul>
 </main>
-<script>
-const buttons=[...document.querySelectorAll('.filter')],cards=[...document.querySelectorAll('.card')],search=document.querySelector('.search'),count=document.querySelector('#count');let category='all';
-function update(){const query=search.value.trim().toLowerCase();let visible=0;for(const card of cards){const match=(category==='all'||card.dataset.category===category)&&card.dataset.name.includes(query);card.hidden=!match;if(match)visible++}count.textContent=visible+' names to explore';document.body.classList.toggle('no-results',visible===0)}
-buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.category;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));update()}));search.addEventListener('input',update);
-</script>
-</body></html>
+</body>
+</html>
