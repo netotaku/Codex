@@ -97,5 +97,16 @@
     "source": "user-approved",
     "episodes": [],
     "links": []
+  },
+  {
+    "id": "the-great-post-office-trial",
+    "name": "The Great Post Office Trial",
+    "creator": "Nick Wallis / BBC Radio 4",
+    "type": "investigative documentary podcast",
+    "collection": "Radio & Podcasts",
+    "status": "accepted",
+    "source": "user-approved",
+    "episodes": [],
+    "links": []
   }
 ]
