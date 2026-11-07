@@ -1,0 +1,22 @@
+---
+import people from '../data/people.json';
+const names = [...people].sort((a,b)=>a.name.localeCompare(b.name));
+---
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>People — Easy Listening</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{font-family:'Space Grotesk',sans-serif;background:#f4eee0;color:#27271f;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0}
+header{padding:clamp(26px,5vw,70px) clamp(22px,6vw,90px) clamp(32px,5vw,75px);border-bottom:2px solid currentColor}
+.logo{font-size:clamp(76px,14vw,230px);font-weight:700;line-height:.76;letter-spacing:-.105em;display:inline-block;text-decoration:none;color:inherit}
+.logo span{display:block}
+main{padding:0 clamp(22px,6vw,90px) 100px;max-width:1700px;margin:auto}
+.tabs{display:flex;align-items:end;gap:35px;border-bottom:1px solid #777769;padding-top:28px;margin-bottom:40px}
+.tab{font:600 clamp(18px,2vw,27px)/1 'Space Grotesk',sans-serif;letter-spacing:-.045em;padding:0 0 18px;border:0;border-bottom:4px solid #e65d25;margin-bottom:-2px;background:none;color:inherit}
+.tab{cursor:pointer}.tab:not(.active){border-bottom-color:transparent;color:#777769}.tab:focus-visible{outline:2px solid #e65d25}.tab span{font-size:13px;vertical-align:top;margin-left:7px;letter-spacing:0}
+.list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:40px}
+.list li{font-size:clamp(18px,2vw,27px);font-weight:500;letter-spacing:-.04em;padding:15px 0;border-bottom:1px solid #b7b2a5;line-height:1.15}
+.feed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,3vw,36px);list-style:none;margin:0;padding:0}.feed-grid li{min-width:0}.feed-grid a{display:block;aspect-ratio:1/1;overflow:hidden;text-decoration:none;color:inherit;background:#e7dfcd}.feed-grid img{width:100%;height:100%;object-fit:cover;display:block}.feed-grid .fallback{width:100%;height:100%;display:grid;place-items:center;padding:10%;text-align:center;font-size:clamp(18px,3.3vw,54px);font-weight:700;line-height:1;letter-spacing:-.05em}.feed-grid a:focus-visible{outline:4px solid #e65d25;outline-offset:3px}[hidden]{display:none!important}
+@media(max-width:800px){.list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 25px}}
+@media(max-width:520px){.logo{font-size:clamp(68px,16vw,110px)}.list{grid-template-columns:1fr}.tabs{margin-bottom:20px}}
+</style></head><body><header><a class="logo" href="/" aria-label="Easy Listening"><span>easy</span><span>listening.</span></a></header><main><ul class="list" style="margin-top:40px">{names.map(item=><li>{item.name}</li>)}</ul></main></body></html>

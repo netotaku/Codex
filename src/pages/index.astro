@@ -1,37 +1,6 @@
 ---
-import people from '../data/people.json';
-const names = [...people].sort((a,b) => a.name.localeCompare(b.name));
-const feeds = [
-["The Adam Buxton Podcast","https://feeds.acast.com/public/shows/18dcd5db-f898-42c6-ab31-3a1853c1a645"],
-["RHLSTP","https://feeds.acast.com/public/shows/aacb15fc-f2a9-43e6-9d0f-521463063cef"],
-["The Louis Theroux Podcast","https://feeds.megaphone.fm/GLT1948741183"],
-["The Rest Is Entertainment","https://feeds.megaphone.fm/GLT2052042801"],
-["Where There's a Will There's a Wake","https://feeds.megaphone.fm/wtawtaw"],
-["The News Agents","https://feeds.captivate.fm/the-news-agents/"],
-["Full Disclosure with James O'Brien","https://feeds.captivate.fm/full-disclosure/"],
-["The MeidasTouch Podcast","https://rss.amperwave.net/v2/feed/audacynetwork/16aa3c6bf526fae9db63070c73cad09f"],
-["Hospital Records Podcast","https://feed.podbean.com/hospitalrecords/feed.xml"],
-["Bassdrive","https://bassdrive.jotlab.com/bassdrive.rss"],
-["Hip Hop Saved My Life","https://shows.acast.com/hiphopsavedmylife"],
-["Ninja Tune Podcast","https://shows.acast.com/ninja-tune"],
-["Gilles Peterson Worldwide","https://shows.acast.com/gillespetersonww"],
-["The John B Podcast","https://www.johnbpodcast.com"],
-["DNB Podcast","https://dnbpodcast.com"],
-["Paths of Rhythm","https://pathsofrhythm.com"],
-["The Good Liars Tell the Truth","https://rss.com/podcasts/thegoodliars/"],
-["DNBRadio","https://dnbradio.com/recordings"],
-["V Podcast","https://www.castfox.net/podcast/v-podcast-drum-and-bass-jungle-433815"],
-["Renegade Riddims","https://grep.fm/podcasts/renegade-riddims/"],
-["KushSessions","https://kushsessions.podbean.com/"],
-["Forgotten Mixtapes","https://grep.fm/podcasts/dj-panther-forgotten-mixtapes-1/"],
-["Best Drum and Bass Podcast","https://drumandbassuk.com/podcast/best-drum-and-bass-podcast-hosted-by-bad-syntax-neurofunk-dnb-weekly"],
-["DJ Richie Don Podcast","https://djrichiedon.com/podcast/"],
-["Genius","https://fourble.co.uk/podcast/genius"],
-["Random Movement Podcast","https://rssamplifier.com/random-movement-podcast"],
-["Cue Drops","https://shows.acast.com/cue-drops"],
-["Off Menu","https://shows.acast.com/offmenu"],
-["Drum & Bass Mixes","https://rss.com/podcasts/drum-bass-mixes/"]
-].map(([name,url])=>({name,url}));
+const feeds = [{"name":"The Adam Buxton Podcast","url":"https://feeds.acast.com/public/shows/18dcd5db-f898-42c6-ab31-3a1853c1a645","category":"Comedy & Culture"},{"name":"RHLSTP","url":"https://feeds.acast.com/public/shows/aacb15fc-f2a9-43e6-9d0f-521463063cef","category":"Comedy & Culture"},{"name":"The Louis Theroux Podcast","url":"https://feeds.megaphone.fm/GLT1948741183","category":"Comedy & Culture"},{"name":"The Rest Is Entertainment","url":"https://feeds.megaphone.fm/GLT2052042801","category":"Comedy & Culture"},{"name":"Where There's a Will There's a Wake","url":"https://feeds.megaphone.fm/wtawtaw","category":"Comedy & Culture"},{"name":"The News Agents","url":"https://feeds.captivate.fm/the-news-agents/","category":"Politics"},{"name":"Full Disclosure with James O'Brien","url":"https://feeds.captivate.fm/full-disclosure/","category":"Politics"},{"name":"The MeidasTouch Podcast","url":"https://rss.amperwave.net/v2/feed/audacynetwork/16aa3c6bf526fae9db63070c73cad09f","category":"Politics"},{"name":"Hospital Records Podcast","url":"https://feed.podbean.com/hospitalrecords/feed.xml","category":"Music"},{"name":"Bassdrive","url":"https://bassdrive.jotlab.com/bassdrive.rss","category":"Music"},{"name":"Hip Hop Saved My Life","url":"https://shows.acast.com/hiphopsavedmylife","category":"Music"},{"name":"Ninja Tune Podcast","url":"https://shows.acast.com/ninja-tune","category":"Music"},{"name":"Gilles Peterson Worldwide","url":"https://shows.acast.com/gillespetersonww","category":"Music"},{"name":"The John B Podcast","url":"https://www.johnbpodcast.com","category":"Music"},{"name":"DNB Podcast","url":"https://dnbpodcast.com","category":"Music"},{"name":"Paths of Rhythm","url":"https://pathsofrhythm.com","category":"Music"},{"name":"The Good Liars Tell the Truth","url":"https://rss.com/podcasts/thegoodliars/","category":"Politics"},{"name":"DNBRadio","url":"https://dnbradio.com/recordings","category":"Music"},{"name":"V Podcast","url":"https://www.castfox.net/podcast/v-podcast-drum-and-bass-jungle-433815","category":"Music"},{"name":"Renegade Riddims","url":"https://grep.fm/podcasts/renegade-riddims/","category":"Music"},{"name":"KushSessions","url":"https://kushsessions.podbean.com/","category":"Music"},{"name":"Forgotten Mixtapes","url":"https://grep.fm/podcasts/dj-panther-forgotten-mixtapes-1/","category":"Music"},{"name":"Best Drum and Bass Podcast","url":"https://drumandbassuk.com/podcast/best-drum-and-bass-podcast-hosted-by-bad-syntax-neurofunk-dnb-weekly","category":"Music"},{"name":"DJ Richie Don Podcast","url":"https://djrichiedon.com/podcast/","category":"Music"},{"name":"Genius","url":"https://fourble.co.uk/podcast/genius","category":"Comedy & Culture"},{"name":"Random Movement Podcast","url":"https://rssamplifier.com/random-movement-podcast","category":"Music"},{"name":"Cue Drops","url":"https://shows.acast.com/cue-drops","category":"Music"},{"name":"Off Menu","url":"https://shows.acast.com/offmenu","category":"Comedy & Culture"},{"name":"Drum & Bass Mixes","url":"https://rss.com/podcasts/drum-bass-mixes/","category":"Music"}];
+const categories = ['Music','Comedy & Culture','Politics'];
 ---
 <!doctype html>
 <html lang="en">
@@ -62,16 +31,14 @@ main{padding:0 clamp(22px,6vw,90px) 100px;max-width:1700px;margin:auto}
 <body>
 <header><a class="logo" href="/" aria-label="Easy Listening"><span>easy</span><span>listening.</span></a></header>
 <main>
-<nav class="tabs" aria-label="Collections"><button class="tab active" type="button" data-tab="feeds" aria-selected="true">Feeds <span>{feeds.length}</span></button><button class="tab" type="button" data-tab="people" aria-selected="false">People <span>{names.length}</span></button></nav>
-<section id="feeds-panel"><ul class="feed-grid">{feeds.map((item,i)=><li><a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} title={item.name} data-feed-name={item.name}><span class="fallback">{item.name}</span></a></li>)}</ul></section>
-<section id="people-panel" hidden><ul class="list">{names.map(item=><li>{item.name}</li>)}</ul></section>
+<nav class="tabs" aria-label="Feed categories">{categories.map((category,i)=><button class:list={['tab',{'active':i===0}]} type="button" data-tab={category} aria-selected={i===0?'true':'false'}>{category} <span>{feeds.filter(feed=>feed.category===category).length}</span></button>)}</nav>
+{categories.map((category,i)=><section class="feed-panel" data-panel={category} hidden={i!==0}><ul class="feed-grid">{feeds.filter(feed=>feed.category===category).map(item=><li><a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} title={item.name} data-feed-name={item.name}><span class="fallback">{item.name}</span></a></li>)}</ul></section>)}
 <script>
 const buttons = document.querySelectorAll('[data-tab]');
 buttons.forEach(button=>button.addEventListener('click',()=>{
  const selected=button.dataset.tab;
  buttons.forEach(b=>{const active=b.dataset.tab===selected;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});
- document.getElementById('feeds-panel').hidden=selected!=='feeds';
- document.getElementById('people-panel').hidden=selected!=='people';
+ document.querySelectorAll('[data-panel]').forEach(panel=>{panel.hidden=panel.dataset.panel!==selected;});
 }));
 const normalise = s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
 const tiles=[...document.querySelectorAll('[data-feed-name]')];
