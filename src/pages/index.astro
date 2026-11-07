@@ -12,7 +12,7 @@ header{padding:clamp(26px,5vw,70px) clamp(22px,6vw,90px) clamp(32px,5vw,75px);bo
 main{padding:0 clamp(22px,6vw,90px) 100px;max-width:1700px;margin:auto}
 .tabs-wrap{position:relative}.tabs{display:flex;gap:35px;align-items:end;border-bottom:1px solid #777769;padding-top:28px;margin-bottom:35px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;white-space:nowrap}.tabs::-webkit-scrollbar{display:none}.tabs-wrap:after{content:"";position:absolute;right:0;top:0;bottom:35px;width:70px;pointer-events:none;background:linear-gradient(to right,transparent,#f4eee0);opacity:0;transition:opacity .2s}.tabs-wrap.has-overflow:not(.at-end):after{opacity:1}
 .tab{flex:0 0 auto;cursor:pointer;font:600 clamp(18px,2vw,27px)/1 'Space Grotesk',sans-serif;letter-spacing:-.045em;padding:0 0 18px;border:0;border-bottom:4px solid #e65d25;margin-bottom:-2px;background:none;color:inherit}.tab:not(.active){border-bottom-color:transparent;color:#777769}.tab:focus-visible{outline:2px solid #e65d25}.tab span{font-size:13px;vertical-align:top;margin-left:7px;letter-spacing:0}
-.feed-list{list-style:none;margin:0;padding:0}.feed-list li{border-bottom:1px solid #b7b2a5}.feed-list a{display:block;padding:17px 0;color:inherit;text-decoration:none}.feed-list a:hover .episode-title{color:#e65d25}.episode-title{font-size:clamp(19px,2vw,28px);font-weight:600;letter-spacing:-.045em;line-height:1.18}.episode-meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px;font-size:13px;font-weight:600;color:#777769}.episode-description{font-size:15px;line-height:1.5;max-width:850px;margin:9px 0 0;color:#55554b}.feed-status{padding:16px 0;color:#777769}.load-more{margin-top:25px;background:none;border:1px solid #27271f;padding:12px 22px;font:600 16px 'Space Grotesk',sans-serif;cursor:pointer}[hidden]{display:none!important}
+.feed-list{list-style:none;margin:0;padding:0}.feed-list li{border-bottom:1px solid #b7b2a5;transition:background .2s}.feed-list li:hover{background:rgba(230,93,37,.035)}.feed-list a{display:block;padding:22px 4px;color:inherit;text-decoration:none}.feed-list a:hover .episode-title{color:#e65d25}.episode-title{font-size:clamp(19px,2vw,28px);font-weight:600;letter-spacing:-.045em;line-height:1.18}.episode-meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px;font-size:13px;font-weight:600;color:#777769}.episode-description{font-size:15px;line-height:1.55;max-width:780px;margin:12px 0 0;color:#55554b}.media-badge{display:inline-flex;align-items:center;gap:5px;border-radius:3px;padding:3px 7px;font-size:11px;font-weight:700;letter-spacing:.015em;text-transform:uppercase}.media-badge.available{background:#dce8d5;color:#365b37}.media-badge.unavailable{background:#e6e0d4;color:#777064}.episode-meta time{font-variant-numeric:tabular-nums}.feed-status{padding:16px 0;color:#777769}.load-more{margin-top:25px;background:none;border:1px solid #27271f;padding:12px 22px;font:600 16px 'Space Grotesk',sans-serif;cursor:pointer}[hidden]{display:none!important}
 @media(max-width:700px){.feed-list{grid-template-columns:1fr}.thumb{width:66px;height:66px;flex-basis:66px}.feed-list a{min-height:84px}.logo{font-size:clamp(68px,16vw,110px)}.tabs{gap:27px;margin-bottom:22px}.tabs-wrap:after{bottom:22px}}
 </style></head><body><header><a class="logo" href="/" aria-label="Easy Listening"><span>easy</span><span>listening.</span></a></header><main>
 <div class="tabs-wrap"><nav class="tabs" aria-label="Feed categories">{categories.map((category,i)=><button class:list={['tab',{'active':i===0}]} type="button" data-tab={category} aria-selected={i===0?'true':'false'}>{category} <span>{feeds.filter(feed=>feed.category===category).length}</span></button>)}</nav></div>
@@ -42,9 +42,12 @@ async function readFeed(url,show){
  if(xml.querySelector('parsererror'))return [];
  return [...xml.getElementsByTagName('item')].slice(0,8).map(item=>{
  const title=textOf(item,'title'),date=textOf(item,'pubDate');
- const enclosure=item.getElementsByTagName('enclosure')[0]?.getAttribute('url');
+ const enclosureNode=[...item.getElementsByTagName('enclosure')].find(n=>/^(audio|video)\//i.test(n.getAttribute('type')||''))||item.getElementsByTagName('enclosure')[0];
+ const enclosure=enclosureNode?.getAttribute('url')||null;
+ const mediaType=enclosureNode?.getAttribute('type')||'';
+ const hasMedia=!!enclosure&&(/^(audio|video)\//i.test(mediaType)||/\.(mp3|m4a|aac|ogg|opus|wav|mp4|m4v|webm)(\?|$)/i.test(enclosure));
  const link=textOf(item,'link')||enclosure||url;
- return {title,source:show.name,date,description:plain(textOf(item,'description')||textOf(item,'content:encoded')||textOf(item,'itunes:summary')),url:link,stamp:Date.parse(date)||0};
+ return {title,source:show.name,date,description:plain(textOf(item,'description')||textOf(item,'content:encoded')||textOf(item,'itunes:summary')),url:link,mediaUrl:hasMedia?enclosure:null,hasMedia,stamp:Date.parse(date)||0};
  }).filter(e=>e.title&&e.stamp);
 }
 async function getEpisodes(category){
@@ -65,12 +68,12 @@ function render(category,items){
  const list=panel.querySelector('.feed-list');const status=panel.querySelector('.feed-status');const more=panel.querySelector('.load-more');
  let shown=0;list.replaceChildren();
  function append(){const fragment=document.createDocumentFragment();for(const e of items.slice(shown,shown+30)){
- const li=document.createElement('li'),a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener noreferrer';
+ const li=document.createElement('li'),a=document.createElement('a');li.className='episode-item';a.href=e.url;a.target='_blank';a.rel='noopener noreferrer';
  const title=document.createElement('div');title.className='episode-title';title.textContent=e.title;
  const meta=document.createElement('div');meta.className='episode-meta';
  const source=document.createElement('span');source.textContent=e.source;
  const date=document.createElement('time');date.dateTime=new Date(e.stamp).toISOString();date.textContent=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'}).format(e.stamp);
- meta.append(source,date);a.append(title,meta);
+ meta.append(source,date);const badge=document.createElement('span');badge.className=e.hasMedia?'media-badge available':'media-badge unavailable';badge.textContent=e.hasMedia?'● Media attached':'○ No media';badge.title=e.hasMedia?'RSS contains an audio or video enclosure; playback not independently verified':'No recognised media enclosure in the RSS item';meta.append(badge);a.append(title,meta);
  if(e.description){const desc=document.createElement('p');desc.className='episode-description';desc.textContent=e.description;a.append(desc)}
  li.append(a);fragment.append(li)
  }list.append(fragment);shown=Math.min(shown+30,items.length);more.hidden=shown>=items.length}
