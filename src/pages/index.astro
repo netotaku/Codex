@@ -18,12 +18,12 @@ header{padding:clamp(26px,5vw,70px) clamp(22px,6vw,90px) clamp(32px,5vw,75px);bo
 .logo{font-size:clamp(76px,14vw,230px);font-weight:700;line-height:.76;letter-spacing:-.105em;display:inline-block;text-decoration:none;color:inherit}
 .logo span{display:block}
 main{padding:0 clamp(22px,6vw,90px) 100px;max-width:1700px;margin:auto}
-.tabs{display:flex;align-items:end;gap:35px;border-bottom:1px solid #777769;padding-top:28px;margin-bottom:40px}
+.tabs{display:flex;align-items:end;gap:35px;border-bottom:1px solid #777769;padding-top:28px;margin-bottom:40px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;white-space:nowrap}.tabs::-webkit-scrollbar{display:none}.tabs-wrap{position:relative}.tabs-wrap:after{content:"";position:absolute;right:0;top:0;bottom:40px;width:65px;pointer-events:none;background:linear-gradient(to right,transparent,#f4eee0);opacity:0;transition:opacity .2s}.tabs-wrap.has-overflow:not(.at-end):after{opacity:1}.tab{flex:0 0 auto}
 .tab{font:600 clamp(18px,2vw,27px)/1 'Space Grotesk',sans-serif;letter-spacing:-.045em;padding:0 0 18px;border:0;border-bottom:4px solid #e65d25;margin-bottom:-2px;background:none;color:inherit}
 .tab{cursor:pointer}.tab:not(.active){border-bottom-color:transparent;color:#777769}.tab:focus-visible{outline:2px solid #e65d25}.tab span{font-size:13px;vertical-align:top;margin-left:7px;letter-spacing:0}
 .list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:40px}
 .list li{font-size:clamp(18px,2vw,27px);font-weight:500;letter-spacing:-.04em;padding:15px 0;border-bottom:1px solid #b7b2a5;line-height:1.15}
-.feed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,3vw,36px);list-style:none;margin:0;padding:0}.feed-grid li{min-width:0}.feed-grid a{display:block;aspect-ratio:1/1;overflow:hidden;text-decoration:none;color:inherit;background:#e7dfcd}.feed-grid img{width:100%;height:100%;object-fit:cover;display:block}.feed-grid .fallback{width:100%;height:100%;display:grid;place-items:center;padding:10%;text-align:center;font-size:clamp(18px,3.3vw,54px);font-weight:700;line-height:1;letter-spacing:-.05em}.feed-grid a:focus-visible{outline:4px solid #e65d25;outline-offset:3px}[hidden]{display:none!important}
+.feed-list{list-style:none;margin:0;padding:0}.feed-list li{border-bottom:1px solid #b7b2a5}.feed-list a{display:block;padding:15px 0;color:inherit;text-decoration:none;font-size:clamp(18px,2vw,27px);font-weight:500;letter-spacing:-.04em;line-height:1.15}.feed-list a:hover{color:#e65d25}.feed-list a:focus-visible{outline:2px solid #e65d25}[hidden]{display:none!important}
 @media(max-width:800px){.list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 25px}}
 @media(max-width:520px){.logo{font-size:clamp(68px,16vw,110px)}.list{grid-template-columns:1fr}.tabs{margin-bottom:20px}}
 </style>
@@ -31,8 +31,8 @@ main{padding:0 clamp(22px,6vw,90px) 100px;max-width:1700px;margin:auto}
 <body>
 <header><a class="logo" href="/" aria-label="Easy Listening"><span>easy</span><span>listening.</span></a></header>
 <main>
-<nav class="tabs" aria-label="Feed categories">{categories.map((category,i)=><button class:list={['tab',{'active':i===0}]} type="button" data-tab={category} aria-selected={i===0?'true':'false'}>{category} <span>{feeds.filter(feed=>feed.category===category).length}</span></button>)}</nav>
-{categories.map((category,i)=><section class="feed-panel" data-panel={category} hidden={i!==0}><ul class="feed-grid">{feeds.filter(feed=>feed.category===category).map(item=><li><a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} title={item.name} data-feed-name={item.name}><span class="fallback">{item.name}</span></a></li>)}</ul></section>)}
+<div class="tabs-wrap"><nav class="tabs" aria-label="Feed categories">{categories.map((category,i)=><button class:list={['tab',{'active':i===0}]} type="button" data-tab={category} aria-selected={i===0?'true':'false'}>{category} <span>{feeds.filter(feed=>feed.category===category).length}</span></button>)}</nav></div>
+{categories.map((category,i)=><section class="feed-panel" data-panel={category} hidden={i!==0}><ul class="feed-list">{feeds.filter(feed=>feed.category===category).map(item=><li><a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a></li>)}</ul></section>)}
 <script>
 const buttons = document.querySelectorAll('[data-tab]');
 buttons.forEach(button=>button.addEventListener('click',()=>{
@@ -40,22 +40,9 @@ buttons.forEach(button=>button.addEventListener('click',()=>{
  buttons.forEach(b=>{const active=b.dataset.tab===selected;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});
  document.querySelectorAll('[data-panel]').forEach(panel=>{panel.hidden=panel.dataset.panel!==selected;});
 }));
-const normalise = s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
-const tiles=[...document.querySelectorAll('[data-feed-name]')];
-const queue=[...tiles];let workers=0;
-async function loadArtwork(tile){
- const name=tile.dataset.feedName;
- try{
-  const response=await fetch('https://itunes.apple.com/search?'+new URLSearchParams({term:name,media:'podcast',entity:'podcast',limit:'8'}));
-  if(!response.ok)return;
-  const data=await response.json();
-  const match=(data.results||[]).find(x=>normalise(x.collectionName||'')===normalise(name));
-  const artwork=match?.artworkUrl600||match?.artworkUrl100;
-  if(artwork){const img=document.createElement('img');img.src=artwork;img.alt='';img.loading='lazy';img.onerror=()=>img.remove();tile.replaceChildren(img);}
- }catch{}
-}
-async function work(){while(queue.length)await loadArtwork(queue.shift());}
-Promise.all(Array.from({length:4},work));
+const tabs=document.querySelector('.tabs');const wrap=document.querySelector('.tabs-wrap');
+function updateTabFade(){wrap.classList.toggle('has-overflow',tabs.scrollWidth>tabs.clientWidth+2);wrap.classList.toggle('at-end',tabs.scrollLeft+tabs.clientWidth>=tabs.scrollWidth-2)}
+tabs.addEventListener('scroll',updateTabFade,{passive:true});window.addEventListener('resize',updateTabFade);updateTabFade();
 </script>
 </main>
 </body>
