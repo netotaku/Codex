@@ -5,9 +5,19 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "vitest run"
   },
   "dependencies": {
-    "astro": "^5.11.1"
+    "@astrojs/vue": "^5.1.4",
+    "astro": "^5.11.1",
+    "vue": "^3.5.45"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/test-utils": "^2.5.1",
+    "jsdom": "^26.1.0",
+    "sass": "^1.108.1",
+    "vitest": "^3.2.7"
   }
 }

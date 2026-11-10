@@ -1,0 +1,1522 @@
+{
+  "checkedOn": "2026-11-10",
+  "method": "HTTP fetch and complete RSS XML parse; show titles and aliases reviewed. Browser CORS and media playback are not checked.",
+  "feeds": [
+    {
+      "name": "The Adam Buxton Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/18dcd5db-f898-42c6-ab31-3a1853c1a645",
+      "feedTitle": "THE ADAM BUXTON PODCAST",
+      "episodeCount": 288
+    },
+    {
+      "name": "RHLSTP",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/aacb15fc-f2a9-43e6-9d0f-521463063cef",
+      "feedTitle": "Richard Herring's Leicester Square Theatre Podcast (RHLSTP)",
+      "episodeCount": 1169
+    },
+    {
+      "name": "The Louis Theroux Podcast",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/GLT1948741183",
+      "feedTitle": "The Louis Theroux Podcast",
+      "episodeCount": 78
+    },
+    {
+      "name": "The Rest Is Entertainment",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/GLT2052042801",
+      "feedTitle": "The Rest Is Entertainment",
+      "episodeCount": 332
+    },
+    {
+      "name": "Where There's a Will There's a Wake",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/wtawtaw",
+      "feedTitle": "Where There's A Will, There's A Wake",
+      "episodeCount": 222
+    },
+    {
+      "name": "The News Agents",
+      "status": "verified",
+      "url": "https://feeds.captivate.fm/the-news-agents/",
+      "feedTitle": "The News Agents",
+      "episodeCount": 1266
+    },
+    {
+      "name": "Full Disclosure with James O'Brien",
+      "status": "verified",
+      "url": "https://feeds.captivate.fm/full-disclosure/",
+      "feedTitle": "Full Disclosure with James O'Brien",
+      "episodeCount": 356
+    },
+    {
+      "name": "The MeidasTouch Podcast",
+      "status": "verified",
+      "url": "https://rss.amperwave.net/v2/feed/audacynetwork/16aa3c6bf526fae9db63070c73cad09f",
+      "feedTitle": "The MeidasTouch Podcast",
+      "episodeCount": 4652
+    },
+    {
+      "name": "Hospital Records Podcast",
+      "status": "verified",
+      "url": "https://feed.podbean.com/hospitalrecords/feed.xml",
+      "feedTitle": "Hospital Records Podcast",
+      "episodeCount": 500
+    },
+    {
+      "name": "Bassdrive",
+      "status": "verified",
+      "url": "https://bassdrive.jotlab.com/bassdrive.rss",
+      "feedTitle": "Bassdrive",
+      "episodeCount": 200
+    },
+    {
+      "name": "Hip Hop Saved My Life",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/3de6285f-ec4c-4217-adce-1a7b3f5c6b24",
+      "feedTitle": "Hip Hop Saved My Life with Romesh Ranganathan",
+      "episodeCount": 134
+    },
+    {
+      "name": "Ninja Tune Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/ninja-tune",
+      "feedTitle": "Ninja Tune Podcast",
+      "episodeCount": 68
+    },
+    {
+      "name": "Gilles Peterson Worldwide",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/fdf99a0e-b72d-4a89-a7e5-0c3f91dcab63",
+      "feedTitle": "Gilles Peterson",
+      "episodeCount": 127
+    },
+    {
+      "name": "The John B Podcast",
+      "status": "verified",
+      "url": "https://www.johnbpodcast.com/feed/",
+      "feedTitle": "John B Podcast",
+      "episodeCount": 10
+    },
+    {
+      "name": "DNB Podcast",
+      "status": "verified",
+      "url": "https://feeds.redcircle.com/dcbb0171-a639-4384-bab6-dade37e6ab68",
+      "feedTitle": "DNB Podcast",
+      "episodeCount": 130
+    },
+    {
+      "name": "Paths of Rhythm",
+      "status": "verified",
+      "url": "https://feeds.captivate.fm/once-a-dj/",
+      "feedTitle": "Paths of Rhythm (Formerly Once A DJ)",
+      "episodeCount": 101
+    },
+    {
+      "name": "The Good Liars Tell the Truth",
+      "status": "verified",
+      "url": "https://media.rss.com/thegoodliars/feed.xml",
+      "feedTitle": "The Good Liars Tell The Truth",
+      "episodeCount": 63
+    },
+    {
+      "name": "DNBRadio",
+      "status": "verified",
+      "url": "https://dnbradio.com/rss",
+      "feedTitle": "DNBRADIO.com - Fresh Jungle, Drum and Bass, DNB",
+      "episodeCount": 50
+    },
+    {
+      "name": "V Podcast",
+      "status": "verified",
+      "url": "https://feedpress.me/vrecordingspodcast",
+      "feedTitle": "V Podcast - Drum and Bass / Jungle",
+      "episodeCount": 179
+    },
+    {
+      "name": "Renegade Riddims",
+      "status": "verified",
+      "url": "https://feeds.soundcloud.com/users/soundcloud:users:489718170/sounds.rss",
+      "feedTitle": "Renegade Riddims",
+      "episodeCount": 462
+    },
+    {
+      "name": "KushSessions",
+      "status": "verified",
+      "url": "https://feed.podbean.com/kushsessions/feed.xml",
+      "feedTitle": "KushSessions RSS Feed",
+      "episodeCount": 40
+    },
+    {
+      "name": "Forgotten Mixtapes",
+      "status": "verified",
+      "url": "https://rss.buzzsprout.com/178043.rss",
+      "feedTitle": "DJ Panther: Forgotten Mixtapes",
+      "episodeCount": 59
+    },
+    {
+      "name": "Best Drum and Bass Podcast",
+      "status": "verified",
+      "url": "https://feeds.blubrry.com/feeds/3807880.xml",
+      "feedTitle": "Best Drum and Bass Podcast – Hosted by Bad Syntax | Neurofunk + DNB Weekly",
+      "episodeCount": 492
+    },
+    {
+      "name": "DJ Richie Don Podcast",
+      "status": "verified",
+      "url": "https://djrichiedon.podomatic.com/rss2.xml",
+      "feedTitle": "DJ Richie Don Podcast",
+      "episodeCount": 79
+    },
+    {
+      "name": "Genius",
+      "status": "verified",
+      "url": "https://fourble.co.uk/genius-150421-0.rss",
+      "feedTitle": "Genius",
+      "episodeCount": 17
+    },
+    {
+      "name": "Random Movement Podcast",
+      "status": "verified",
+      "url": "https://podcast.randommovement.org/podcasts/R_m-podcast.xml",
+      "feedTitle": "Random Movement Podcast",
+      "episodeCount": 166
+    },
+    {
+      "name": "Cue Drops",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/cue-drops",
+      "feedTitle": "Cue Drops",
+      "episodeCount": 18
+    },
+    {
+      "name": "Off Menu",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/b19ac1f5-6adf-4c8b-aa1a-2af2160f99e4",
+      "feedTitle": "Off Menu with Ed Gamble and James Acaster",
+      "episodeCount": 406
+    },
+    {
+      "name": "Drum & Bass Mixes",
+      "status": "verified",
+      "url": "https://media.rss.com/drum-bass-mixes/feed.xml",
+      "feedTitle": "Drum & Bass Mixes",
+      "episodeCount": 2
+    },
+    {
+      "name": "The Questlove Supreme",
+      "status": "verified",
+      "url": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/86918ee4-4aa4-497b-995a-ae32006cd4b7/ee132490-ba24-4965-b558-ae32006cd4c0/podcast.rss",
+      "feedTitle": "The Questlove Show",
+      "episodeCount": 513
+    },
+    {
+      "name": "Broken Record",
+      "status": "verified",
+      "url": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/ff0ba2f2-f33c-4193-aba2-ae32006cd633/11c188a1-cb86-4869-9c57-ae32006cd63c/podcast.rss",
+      "feedTitle": "Broken Record with Rick Rubin, Malcolm Gladwell, Bruce Headlam and Justin Richmond",
+      "episodeCount": 413
+    },
+    {
+      "name": "Song Exploder",
+      "status": "verified",
+      "url": "https://feed.songexploder.net/SongExploder",
+      "feedTitle": "Song Exploder",
+      "episodeCount": 381
+    },
+    {
+      "name": "Switched on Pop",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/switchedonpop",
+      "feedTitle": "Switched on Pop",
+      "episodeCount": 561
+    },
+    {
+      "name": "The Vinyl Guide",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/72989/destinations/315004.xml",
+      "feedTitle": "The Vinyl Guide - Artist Interviews for Record Collectors and Music Nerds",
+      "episodeCount": 588
+    },
+    {
+      "name": "The Record Store Day Podcast",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/201836/destinations/1440950.xml",
+      "feedTitle": "The Record Store Day Podcast with Paul Myers",
+      "episodeCount": 257
+    },
+    {
+      "name": "The Soul Music Lab",
+      "status": "verified",
+      "url": "https://rss.buzzsprout.com/2000368.rss",
+      "feedTitle": "The Soul Music Lab ",
+      "episodeCount": 409
+    },
+    {
+      "name": "The DJ History Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/billbrewster",
+      "feedTitle": "DJ History Podcast",
+      "episodeCount": 15
+    },
+    {
+      "name": "The Ransom Note Podcast",
+      "status": "verified",
+      "url": "https://feeds.feedburner.com/soundcloud/wRhy",
+      "feedTitle": "Ransom Note",
+      "episodeCount": 500
+    },
+    {
+      "name": "RA Exchange",
+      "status": "verified",
+      "url": "https://ra.co/xml/podcast-exchange.xml",
+      "feedTitle": "RA Exchange",
+      "episodeCount": 541
+    },
+    {
+      "name": "Resident Advisor Podcast",
+      "status": "verified",
+      "url": "https://ra.co/xml/podcast.xml",
+      "feedTitle": "RA Podcast",
+      "episodeCount": 500
+    },
+    {
+      "name": "The Lot Radio",
+      "status": "verified",
+      "url": "https://feeds.soundcloud.com/users/soundcloud:users:90833894/sounds.rss",
+      "feedTitle": "The Lot Radio",
+      "episodeCount": 500
+    },
+    {
+      "name": "Worldwide FM",
+      "status": "verified",
+      "url": "https://feeds.soundcloud.com/users/soundcloud:users:82239102/sounds.rss",
+      "feedTitle": "New Music Worldwide Mix Series BETA",
+      "episodeCount": 67
+    },
+    {
+      "name": "Defected Radio",
+      "status": "verified",
+      "url": "https://feeds.feedburner.com/defectedradioshow",
+      "feedTitle": "Defected Radio",
+      "episodeCount": 1069
+    },
+    {
+      "name": "The Classic Music Company",
+      "status": "verified",
+      "url": "https://feeds.thisisdistorted.com/xml/luke-solomon-business-as-usual-live-from-the-wash-house",
+      "feedTitle": "The Classic Music Company presents Business As Usual",
+      "episodeCount": 144
+    },
+    {
+      "name": "The Chillout Lounge Mix",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/22160/destinations/27934.xml",
+      "feedTitle": "The Chillout Lounge Mix",
+      "episodeCount": 151
+    },
+    {
+      "name": "The Hip-Hop Digest Show",
+      "status": "verified",
+      "url": "https://www.hiphopdigestshow.com/category/hip-hop-digest/feed/",
+      "feedTitle": "The Hip-Hop Digest Show",
+      "episodeCount": 10
+    },
+    {
+      "name": "The Music Snobs",
+      "status": "verified",
+      "url": "https://feeds.fireside.fm/themusicsnobs/rss",
+      "feedTitle": "THE MUSIC SNOBS",
+      "episodeCount": 57
+    },
+    {
+      "name": "Heat Rocks",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/sUxwITUa",
+      "feedTitle": "Heat Rocks",
+      "episodeCount": 221
+    },
+    {
+      "name": "The Midnight Miracle",
+      "status": "verified",
+      "url": "https://access.acast.com/rss/653fda38bfecf800129c4337",
+      "feedTitle": "The Midnight Miracle",
+      "episodeCount": 36
+    },
+    {
+      "name": "Cocaine & Rhinestones",
+      "status": "verified",
+      "url": "https://anchor.fm/s/52444bf0/podcast/rss",
+      "feedTitle": "Cocaine & Rhinestones: The History of Country Music",
+      "episodeCount": 35
+    },
+    {
+      "name": "A History of Rock Music in 500 Songs",
+      "status": "verified",
+      "url": "https://500songs.com/feed/podcast/a-history-of-rock-music-in-500-songs/",
+      "feedTitle": "A History of Rock Music in 500 Songs",
+      "episodeCount": 261
+    },
+    {
+      "name": "The Tape Notes Podcast",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/TNL8747838853",
+      "feedTitle": "Tape Notes",
+      "episodeCount": 211
+    },
+    {
+      "name": "Tape Op Podcast",
+      "status": "verified",
+      "url": "https://feeds.soundcloud.com/users/soundcloud:users:262654041/sounds.rss",
+      "feedTitle": "Tape Op Podcast",
+      "episodeCount": 170
+    },
+    {
+      "name": "The New Music Business",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/thenewmusicbusiness",
+      "feedTitle": "The New Music Business with Ari Herstand",
+      "episodeCount": 250
+    },
+    {
+      "name": "The Mixing Music Podcast",
+      "status": "verified",
+      "url": "https://feeds.redcircle.com/383b5e03-e68b-4ac0-8e78-6fd55f08fa09",
+      "feedTitle": "Mixing Music | Music Production, Audio Engineering, & Music Business",
+      "episodeCount": 456
+    },
+    {
+      "name": "The Blindboy Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/9d5c107b-68d6-4c1b-8c80-45ee6a84c947",
+      "feedTitle": "The Blindboy Podcast",
+      "episodeCount": 481
+    },
+    {
+      "name": "The Bugle",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/5e7b777ba085cbe7192b0607",
+      "feedTitle": "The Bugle",
+      "episodeCount": 722
+    },
+    {
+      "name": "Oh God What Now?",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/PMO6148729915",
+      "feedTitle": "Oh God, What Now?",
+      "episodeCount": 801
+    },
+    {
+      "name": "The Bunker",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/6a2ad2e9440b9d7bbf6bde6b",
+      "feedTitle": "The Bunker – Your daily news Deep Dive",
+      "episodeCount": 1947
+    },
+    {
+      "name": "The Rest Is Politics",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/GLT9190936013",
+      "feedTitle": "The Rest Is Politics",
+      "episodeCount": 631
+    },
+    {
+      "name": "The Rest Is Politics US",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/GLT5336643697",
+      "feedTitle": "The Rest Is Politics: US",
+      "episodeCount": 269
+    },
+    {
+      "name": "Pod Save America",
+      "status": "verified",
+      "url": "https://audioboom.com/channels/5166624.rss",
+      "feedTitle": "Pod Save America",
+      "episodeCount": 1200
+    },
+    {
+      "name": "Pod Save the UK",
+      "status": "verified",
+      "url": "https://audioboom.com/channels/5166011.rss",
+      "feedTitle": "Pod Save the UK",
+      "episodeCount": 185
+    },
+    {
+      "name": "The Ezra Klein Show",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/82FI35Px",
+      "feedTitle": "The Ezra Klein Show",
+      "episodeCount": 550
+    },
+    {
+      "name": "The Daily",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/Sl5CSM3S",
+      "feedTitle": "The Daily",
+      "episodeCount": 71
+    },
+    {
+      "name": "Today in Focus",
+      "status": "verified",
+      "url": "https://www.theguardian.com/news/series/todayinfocus/podcast.xml",
+      "feedTitle": "Today in Focus",
+      "episodeCount": 296
+    },
+    {
+      "name": "Politics Weekly UK",
+      "status": "verified",
+      "url": "https://www.theguardian.com/politics/series/politicsweekly/podcast.xml",
+      "feedTitle": "Politics Weekly UK",
+      "episodeCount": 288
+    },
+    {
+      "name": "The New Statesman Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/newstatesman",
+      "feedTitle": "The Politics Show",
+      "episodeCount": 1493
+    },
+    {
+      "name": "Novara Media",
+      "status": "verified",
+      "url": "https://feeds.feedburner.com/NovaraMediaPodcast",
+      "feedTitle": "Novara Media",
+      "episodeCount": 300
+    },
+    {
+      "name": "Novara Live",
+      "status": "verified",
+      "url": "https://feeds.novaramedia.com/podcasts/novara-live",
+      "feedTitle": "Novara Live",
+      "episodeCount": 300
+    },
+    {
+      "name": "The News Meeting",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/6447cb7391dbd3001135bccf",
+      "feedTitle": "The News Meeting",
+      "episodeCount": 693
+    },
+    {
+      "name": "The Trawl",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/68a837db718453410e2b6f06/",
+      "feedTitle": "The Trawl",
+      "episodeCount": 471
+    },
+    {
+      "name": "The Political Party",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/766e5f56-3d0e-5372-ac75-e16054197bba",
+      "feedTitle": "Matt Forde's Political Party",
+      "episodeCount": 533
+    },
+    {
+      "name": "Americast",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/p07h19zz.rss",
+      "feedTitle": "Americast",
+      "episodeCount": 668
+    },
+    {
+      "name": "The Guardian Long Read",
+      "status": "verified",
+      "url": "https://www.theguardian.com/news/series/the-audio-long-read/podcast.xml",
+      "feedTitle": "The Audio Long Read",
+      "episodeCount": 300
+    },
+    {
+      "name": "On the Media",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/o4jAFXaw",
+      "feedTitle": "On the Media",
+      "episodeCount": 1926
+    },
+    {
+      "name": "The Media Show",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b00dv9hq.rss",
+      "feedTitle": "The Media Show",
+      "episodeCount": 854
+    },
+    {
+      "name": "The New Yorker Radio Hour",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/TRuO_SRo",
+      "feedTitle": "The New Yorker Radio Hour",
+      "episodeCount": 1083
+    },
+    {
+      "name": "The Intercept Briefing",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/f5b64019-68c3-57d4-b70b-043e63e5cbf6",
+      "feedTitle": "The Intercept Briefing ",
+      "episodeCount": 422
+    },
+    {
+      "name": "The Lever Time",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/lever-time",
+      "feedTitle": "Lever Time",
+      "episodeCount": 265
+    },
+    {
+      "name": "The Good Liars Podcast",
+      "status": "verified",
+      "url": "https://media.rss.com/thegoodliars/feed.xml",
+      "feedTitle": "The Good Liars Tell The Truth",
+      "episodeCount": 63
+    },
+    {
+      "name": "The David Pakman Show",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/SHHWD4599743349",
+      "feedTitle": "The David Pakman Show",
+      "episodeCount": 1127
+    },
+    {
+      "name": "The Majority Report with Sam Seder",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/26460/destinations/45523.xml",
+      "feedTitle": "The Majority Report with Sam Seder",
+      "episodeCount": 25
+    },
+    {
+      "name": "The Bulwark Podcast",
+      "status": "verified",
+      "url": "https://audioboom.com/channels/5114286.rss",
+      "feedTitle": "The Bulwark Daily",
+      "episodeCount": 500
+    },
+    {
+      "name": "Hard Fork",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/l2i9YnTd",
+      "feedTitle": "Hard Fork",
+      "episodeCount": 224
+    },
+    {
+      "name": "Decoder with Nilay Patel",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/recodedecode",
+      "feedTitle": "Decoder with Nilay Patel",
+      "episodeCount": 990
+    },
+    {
+      "name": "Darknet Diaries",
+      "status": "verified",
+      "url": "https://podcast.darknetdiaries.com",
+      "feedTitle": "Darknet Diaries",
+      "episodeCount": 183
+    },
+    {
+      "name": "Accidental Tech Podcast",
+      "status": "verified",
+      "url": "https://cdn.atp.fm/rss/public?uznyuvj5",
+      "feedTitle": "Accidental Tech Podcast",
+      "episodeCount": 717
+    },
+    {
+      "name": "The Vergecast",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/vergecast",
+      "feedTitle": "The Vergecast",
+      "episodeCount": 1112
+    },
+    {
+      "name": "Waveform: The MKBHD Podcast",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/STU4418364045",
+      "feedTitle": "Waveform: The MKBHD Podcast",
+      "episodeCount": 384
+    },
+    {
+      "name": "The Talk Show With John Gruber",
+      "status": "verified",
+      "url": "https://daringfireball.net/thetalkshow/rss",
+      "feedTitle": "The Talk Show With John Gruber",
+      "episodeCount": 376
+    },
+    {
+      "name": "This Week in Tech",
+      "status": "verified",
+      "url": "https://feeds.twit.tv/twit.xml",
+      "feedTitle": "This Week in Tech (Audio)",
+      "episodeCount": 20
+    },
+    {
+      "name": "Tech Won't Save Us",
+      "status": "verified",
+      "url": "https://rss.buzzsprout.com/1004689.rss",
+      "feedTitle": "Tech Won't Save Us",
+      "episodeCount": 369
+    },
+    {
+      "name": "Better Offline",
+      "status": "verified",
+      "url": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/cf0c25ad-cf01-4da5-ae1c-b0fc015f790e/53ed270b-7147-4f70-81c2-b0fc015fe4ed/podcast.rss",
+      "feedTitle": "Better Offline",
+      "episodeCount": 286
+    },
+    {
+      "name": "Search Engine",
+      "status": "verified",
+      "url": "https://rss.amperwave.net/v2/feed/audacynetwork/search-engine",
+      "feedTitle": "Search Engine",
+      "episodeCount": 148
+    },
+    {
+      "name": "Reply All",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/replyall",
+      "feedTitle": "Reply All",
+      "episodeCount": 214
+    },
+    {
+      "name": "Underunderstood",
+      "status": "verified",
+      "url": "https://anchor.fm/s/7e5e9c4/podcast/rss",
+      "feedTitle": "Underunderstood",
+      "episodeCount": 58
+    },
+    {
+      "name": "The Internet of Things Podcast",
+      "status": "verified",
+      "url": "https://iotpodcast.com/feed/podcast",
+      "feedTitle": "The Internet of Things Podcast - Stacey On IoT",
+      "episodeCount": 440
+    },
+    {
+      "name": "The Stack Overflow Podcast",
+      "status": "verified",
+      "url": "https://rss.art19.com/the-stack-overflow-podcast",
+      "feedTitle": "The Stack Overflow Podcast",
+      "episodeCount": 1000
+    },
+    {
+      "name": "Syntax",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/FSI1483080183",
+      "feedTitle": "Syntax - Tasty Web Development Treats",
+      "episodeCount": 1054
+    },
+    {
+      "name": "ShopTalk Show",
+      "status": "verified",
+      "url": "https://shoptalkshow.com/feed/podcast/default-podcast/",
+      "feedTitle": "ShopTalk",
+      "episodeCount": 100
+    },
+    {
+      "name": "The Changelog",
+      "status": "verified",
+      "url": "https://changelog.com/podcast/feed",
+      "feedTitle": "The Changelog: Software Development, Open Source",
+      "episodeCount": 1018
+    },
+    {
+      "name": "JS Party",
+      "status": "verified",
+      "url": "https://changelog.com/jsparty/feed",
+      "feedTitle": "JS Party: JavaScript, CSS, Web Development",
+      "episodeCount": 361
+    },
+    {
+      "name": "Software Engineering Daily",
+      "status": "verified",
+      "url": "https://softwareengineeringdaily.com/feed/podcast/",
+      "feedTitle": "Software Engineering Daily",
+      "episodeCount": 100
+    },
+    {
+      "name": "The Pragmatic Engineer",
+      "status": "verified",
+      "url": "https://api.substack.com/feed/podcast/458709.rss",
+      "feedTitle": "The Pragmatic Engineer",
+      "episodeCount": 82
+    },
+    {
+      "name": "The AI Daily Brief",
+      "status": "verified",
+      "url": "https://anchor.fm/s/f7cac464/podcast/rss",
+      "feedTitle": "The AI Daily Brief: Artificial Intelligence News and Analysis",
+      "episodeCount": 1135
+    },
+    {
+      "name": "Practical AI",
+      "status": "verified",
+      "url": "https://feeds.transistor.fm/practical-ai-machine-learning-data-science-llm",
+      "feedTitle": "Practical AI",
+      "episodeCount": 381
+    },
+    {
+      "name": "Latent Space",
+      "status": "verified",
+      "url": "https://podcast.latent.space/feed.xml",
+      "feedTitle": "Latent Space: The AI Engineer Podcast",
+      "episodeCount": 296
+    },
+    {
+      "name": "The Cognitive Revolution",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/RINTP3108857801",
+      "feedTitle": "\"The Cognitive Revolution\" ",
+      "episodeCount": 393
+    },
+    {
+      "name": "The TED AI Show",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/6758564a102e6d4448d19589",
+      "feedTitle": "The TED AI Show",
+      "episodeCount": 38
+    },
+    {
+      "name": "The Verge Decoder",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/recodedecode",
+      "feedTitle": "Decoder with Nilay Patel",
+      "episodeCount": 990
+    },
+    {
+      "name": "Techmeme Ride Home",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/ridehome",
+      "feedTitle": "Tech Brew Ride Home",
+      "episodeCount": 2462
+    },
+    {
+      "name": "404 Media Podcast",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/TBIEA2761282490",
+      "feedTitle": "The 404 Media Podcast",
+      "episodeCount": 236
+    },
+    {
+      "name": "99% Invisible",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/BqbsxVfO",
+      "feedTitle": "99% Invisible",
+      "episodeCount": 841
+    },
+    {
+      "name": "Articles of Interest",
+      "status": "verified",
+      "url": "https://feed.articlesofinterest.club/",
+      "feedTitle": "Articles of Interest",
+      "episodeCount": 72
+    },
+    {
+      "name": "The Memory Palace",
+      "status": "verified",
+      "url": "http://feeds.thememorypalace.us/thememorypalace",
+      "feedTitle": "the memory palace",
+      "episodeCount": 331
+    },
+    {
+      "name": "This American Life",
+      "status": "verified",
+      "url": "https://www.thisamericanlife.org/podcast/rss.xml",
+      "feedTitle": "This American Life",
+      "episodeCount": 15
+    },
+    {
+      "name": "Heavyweight",
+      "status": "verified",
+      "url": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/afbd76b8-eff2-442a-b938-b28e0126edad/d08826cd-f888-4cd3-b700-b28e0126edbb/podcast.rss",
+      "feedTitle": "Heavyweight",
+      "episodeCount": 134
+    },
+    {
+      "name": "Radiolab",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/EmVW7VGp",
+      "feedTitle": "Radiolab",
+      "episodeCount": 678
+    },
+    {
+      "name": "The Documentary Podcast",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/p02nq0lx.rss",
+      "feedTitle": "The Documentary Podcast",
+      "episodeCount": 2000
+    },
+    {
+      "name": "The History of English Podcast",
+      "status": "verified",
+      "url": "https://historyofenglishpodcast.com/feed/podcast/",
+      "feedTitle": "The History of English Podcast",
+      "episodeCount": 204
+    },
+    {
+      "name": "The Rest Is History",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/GLT4787413333",
+      "feedTitle": "The Rest Is History",
+      "episodeCount": 739
+    },
+    {
+      "name": "You're Dead to Me",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/p07mdbhg.rss",
+      "feedTitle": "You're Dead to Me",
+      "episodeCount": 297
+    },
+    {
+      "name": "In Our Time",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b006qykl.rss",
+      "feedTitle": "In Our Time",
+      "episodeCount": 1120
+    },
+    {
+      "name": "The Allusionist",
+      "status": "verified",
+      "url": "https://rss.art19.com/the-allusionist",
+      "feedTitle": "The Allusionist",
+      "episodeCount": 258
+    },
+    {
+      "name": "The Anthropocene Reviewed",
+      "status": "verified",
+      "url": "https://rss.art19.com/the-anthropocene-reviewed",
+      "feedTitle": "The Anthropocene Reviewed",
+      "episodeCount": 37
+    },
+    {
+      "name": "The Lonely Palette",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/tIcKNegX",
+      "feedTitle": "The Lonely Palette",
+      "episodeCount": 109
+    },
+    {
+      "name": "The Creep Dive",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/65ce18efd18c7b0016baa629",
+      "feedTitle": "The Creep Dive",
+      "episodeCount": 324
+    },
+    {
+      "name": "The Empire Film Podcast",
+      "status": "verified",
+      "url": "https://rss.podplaystudio.com/1209.xml",
+      "feedTitle": "The Empire Film Podcast",
+      "episodeCount": 1052
+    },
+    {
+      "name": "Kermode and Mayo's Take",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/kermodeandmayo",
+      "feedTitle": "Kermode & Mayo’s Take",
+      "episodeCount": 309
+    },
+    {
+      "name": "Script Apart",
+      "status": "verified",
+      "url": "https://feeds.redcircle.com/b82554de-b5b1-49cf-b805-ff2738b3e071",
+      "feedTitle": "Script Apart with Al Horner",
+      "episodeCount": 185
+    },
+    {
+      "name": "The A24 Podcast",
+      "status": "verified",
+      "url": "https://anchor.fm/s/40560b4/podcast/rss",
+      "feedTitle": "The A24 Podcast",
+      "episodeCount": 64
+    },
+    {
+      "name": "The Big Picture",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/the-big-picture",
+      "feedTitle": "The Big Picture",
+      "episodeCount": 989
+    },
+    {
+      "name": "The Rewatchables",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/the-rewatchables",
+      "feedTitle": "The Rewatchables",
+      "episodeCount": 489
+    },
+    {
+      "name": "The Secret History of Hollywood",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/80600/destinations/371817.xml",
+      "feedTitle": "The Secret History Of Hollywood",
+      "episodeCount": 15
+    },
+    {
+      "name": "The Unexplained with Howard Hughes",
+      "status": "verified",
+      "url": "https://theunexplained.tv/feed2.xml",
+      "feedTitle": "The Unexplained With Howard Hughes\n",
+      "episodeCount": 842
+    },
+    {
+      "name": "Uncanny",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/m0010x7c.rss",
+      "feedTitle": "Uncanny",
+      "episodeCount": 134
+    },
+    {
+      "name": "Lore",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/65267/destinations/259905.xml",
+      "feedTitle": "Lore",
+      "episodeCount": 500
+    },
+    {
+      "name": "The Last Archive",
+      "status": "verified",
+      "url": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/4eda6e56-1ab6-413a-9572-ae32006cd780/78052c02-4128-4b89-9cf9-ae32006cd792/podcast.rss",
+      "feedTitle": "The Last Archive",
+      "episodeCount": 71
+    },
+    {
+      "name": "Stuff You Should Know",
+      "status": "verified",
+      "url": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/a91018a4-ea4f-4130-bf55-ae270180c327/44710ecc-10bb-48d1-93c7-ae270180c33e/podcast.rss",
+      "feedTitle": "Stuff You Should Know",
+      "episodeCount": 2923
+    },
+    {
+      "name": "The Curious History of Your Home",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/thecurioushistoryofyourhome",
+      "feedTitle": "The Curious History of Your Home",
+      "episodeCount": 33
+    },
+    {
+      "name": "The Long Read",
+      "status": "verified",
+      "url": "https://www.theguardian.com/news/series/the-audio-long-read/podcast.xml",
+      "feedTitle": "The Audio Long Read",
+      "episodeCount": 300
+    },
+    {
+      "name": "The Infinite Monkey Cage",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b00snr0w.rss",
+      "feedTitle": "The Infinite Monkey Cage",
+      "episodeCount": 244
+    },
+    {
+      "name": "Curious Cases",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b07dx75g.rss",
+      "feedTitle": "Curious Cases",
+      "episodeCount": 171
+    },
+    {
+      "name": "BBC Inside Science",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b036f7w2.rss",
+      "feedTitle": "BBC Inside Science",
+      "episodeCount": 677
+    },
+    {
+      "name": "Science Weekly",
+      "status": "verified",
+      "url": "https://www.theguardian.com/science/series/science/podcast.xml",
+      "feedTitle": "Science Weekly",
+      "episodeCount": 296
+    },
+    {
+      "name": "Ologies with Alie Ward",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/FO6kxYGj",
+      "feedTitle": "Ologies with Alie Ward",
+      "episodeCount": 540
+    },
+    {
+      "name": "Science Vs",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/sciencevs",
+      "feedTitle": "Science Vs",
+      "episodeCount": 352
+    },
+    {
+      "name": "The Rest Is Science",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/GLT6907573392",
+      "feedTitle": "The Rest Is Science",
+      "episodeCount": 104
+    },
+    {
+      "name": "The Life Scientific",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b015sqc7.rss",
+      "feedTitle": "The Life Scientific",
+      "episodeCount": 362
+    },
+    {
+      "name": "Uncharted with Hannah Fry",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/m001qw8x.rss",
+      "feedTitle": "Uncharted with Hannah Fry",
+      "episodeCount": 22
+    },
+    {
+      "name": "The World the Universe and Us",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/ARML6831509338",
+      "feedTitle": "The World, the Universe and Us",
+      "episodeCount": 476
+    },
+    {
+      "name": "Hidden Brain",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/kwWc0lhf",
+      "feedTitle": "Hidden Brain",
+      "episodeCount": 634
+    },
+    {
+      "name": "StarTalk Radio",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/4T39_jAj",
+      "feedTitle": "StarTalk with Neil deGrasse Tyson",
+      "episodeCount": 1144
+    },
+    {
+      "name": "The Skeptics' Guide to the Universe",
+      "status": "verified",
+      "url": "https://feed.theskepticsguide.org/feed/rss.aspx?feed=sgu",
+      "feedTitle": "The Skeptics' Guide to the Universe",
+      "episodeCount": 1114
+    },
+    {
+      "name": "The Naked Scientists Podcast",
+      "status": "verified",
+      "url": "https://www.thenakedscientists.com/naked_scientists_podcast.xml",
+      "feedTitle": "The Naked Scientists Podcast",
+      "episodeCount": 1304
+    },
+    {
+      "name": "The Science of Everything Podcast",
+      "status": "verified",
+      "url": "https://www.thescienceofeverything.net/feed.xml",
+      "feedTitle": "The Science of Everything Podcast",
+      "episodeCount": 173
+    },
+    {
+      "name": "Unexplainable",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/VMP9331026707",
+      "feedTitle": "Unexplainable",
+      "episodeCount": 324
+    },
+    {
+      "name": "Nature Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/0185cea5-9e3b-4b82-a887-26f91f92765f",
+      "feedTitle": "Nature Podcast",
+      "episodeCount": 943
+    },
+    {
+      "name": "The Quanta Podcast",
+      "status": "verified",
+      "url": "https://quantapodcast.quantamagazine.org/",
+      "feedTitle": "The Quanta Podcast",
+      "episodeCount": 377
+    },
+    {
+      "name": "Sean Carroll's Mindscape",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/604590/destinations/5264190.xml",
+      "feedTitle": "Sean Carroll's Mindscape: Science, Society, Philosophy, Culture, Arts, and Ideas",
+      "episodeCount": 452
+    },
+    {
+      "name": "The Curious Cases of Rutherford and Fry",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b07dx75g.rss",
+      "feedTitle": "Curious Cases",
+      "episodeCount": 171
+    },
+    {
+      "name": "The Science Hour",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/p016tmt2.rss",
+      "feedTitle": "Unexpected Elements",
+      "episodeCount": 351
+    },
+    {
+      "name": "More or Less: Behind the Stats",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/b006qshd.rss",
+      "feedTitle": "More or Less",
+      "episodeCount": 1153
+    },
+    {
+      "name": "CrowdScience",
+      "status": "verified",
+      "url": "https://podcasts.files.bbci.co.uk/p04d42rc.rss",
+      "feedTitle": "CrowdScience",
+      "episodeCount": 518
+    },
+    {
+      "name": "Short Wave",
+      "status": "verified",
+      "url": "https://feeds.npr.org/510351/podcast.xml",
+      "feedTitle": "Short Wave",
+      "episodeCount": 1590
+    },
+    {
+      "name": "The Weirdest Thing I Learned This Week",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/RECU9765916949",
+      "feedTitle": "The Weirdest Thing I Learned This Week",
+      "episodeCount": 240
+    },
+    {
+      "name": "The Psychology Podcast",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/58494/destinations/222210.xml",
+      "feedTitle": "The Psychology Podcast with Scott Barry Kaufman",
+      "episodeCount": 216
+    },
+    {
+      "name": "The Brain Science Podcast",
+      "status": "verified",
+      "url": "https://rss.libsyn.com/shows/18369/destinations/12241.xml",
+      "feedTitle": "Brain Science with Ginger Campbell, MD: Neuroscience for Everyone",
+      "episodeCount": 100
+    },
+    {
+      "name": "The Joy of Why",
+      "status": "verified",
+      "url": "https://joy.quantamagazine.org/",
+      "feedTitle": "The Joy of Why",
+      "episodeCount": 78
+    },
+    {
+      "name": "The Royal Institution Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/69721f218c404bc523823d33",
+      "feedTitle": "Ri Science Podcast",
+      "episodeCount": 125
+    },
+    {
+      "name": "Athletico Mince",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/512e6e5b-1328-4152-869e-16ad11c71e70",
+      "feedTitle": "Athletico Mince",
+      "episodeCount": 235
+    },
+    {
+      "name": "Three Bean Salad",
+      "status": "verified",
+      "url": "https://feeds.captivate.fm/three-bean-salad/",
+      "feedTitle": "Three Bean Salad",
+      "episodeCount": 220
+    },
+    {
+      "name": "The Beef and Dairy Network Podcast",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/4NOSW3hj",
+      "feedTitle": "Beef And Dairy Network",
+      "episodeCount": 149
+    },
+    {
+      "name": "The Horne Section Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/the-horne-section-podcast",
+      "feedTitle": "The Horne Section Podcast",
+      "episodeCount": 76
+    },
+    {
+      "name": "Wolf and Owl",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/GLT9487939818",
+      "feedTitle": "Wolf & Owl with Romesh Ranganathan and Tom Davis",
+      "episodeCount": 377
+    },
+    {
+      "name": "Elis James and John Robins",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/698b89c05e0cb52f15bcde20",
+      "feedTitle": "Elis James and John Robins",
+      "episodeCount": 598
+    },
+    {
+      "name": "Pappy's Flatshare Slamdown",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/NSR6478712326",
+      "feedTitle": "Pappy's Flatshare",
+      "episodeCount": 415
+    },
+    {
+      "name": "Films To Be Buried With",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/QCD8204217646",
+      "feedTitle": "Films To Be Buried With with Brett Goldstein",
+      "episodeCount": 414
+    },
+    {
+      "name": "The Comedian's Comedian Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/thecomedianscomedianpodcast",
+      "feedTitle": "The Comedian's Comedian Podcast",
+      "episodeCount": 583
+    },
+    {
+      "name": "No Such Thing As A Fish",
+      "status": "verified",
+      "url": "https://audioboom.com/channels/2399216.rss",
+      "feedTitle": "No Such Thing As A Fish",
+      "episodeCount": 742
+    },
+    {
+      "name": "What Did You Do Yesterday?",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/what-did-you-do-yesterday",
+      "feedTitle": "What Did You Do Yesterday? with Max Rushden & David O'Doherty",
+      "episodeCount": 214
+    },
+    {
+      "name": "The Worriers",
+      "status": "verified",
+      "url": "https://anchor.fm/s/109ef1168/podcast/rss",
+      "feedTitle": "The Worriers",
+      "episodeCount": 125
+    },
+    {
+      "name": "The Harry Hill Show",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/the-harry-hill-show",
+      "feedTitle": "The Harry Hill Show",
+      "episodeCount": 95
+    },
+    {
+      "name": "Do The Right Thing",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/dotherightthing",
+      "feedTitle": "Do The Right Thing",
+      "episodeCount": 55
+    },
+    {
+      "name": "The John Dredge Nothing To Do With Anything Show",
+      "status": "verified",
+      "url": "https://feeds.feedburner.com/JohnDredgeShow",
+      "feedTitle": "The John Dredge Nothing To Do With Anything Show",
+      "episodeCount": 36
+    },
+    {
+      "name": "The Worst Writer in the World",
+      "status": "verified",
+      "url": "https://feeds.feedburner.com/WorstWriterInTheWorld",
+      "feedTitle": "The Worst Writer in the World",
+      "episodeCount": 269
+    },
+    {
+      "name": "Frank Off The Radio",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/frankskinnershow",
+      "feedTitle": "Frank Off The Radio: The Frank Skinner Podcast ",
+      "episodeCount": 1227
+    },
+    {
+      "name": "The Socially Distant Sports Bar",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/68e81932d798804c9ef004e3",
+      "feedTitle": "The Socially Distant Sports Bar",
+      "episodeCount": 767
+    },
+    {
+      "name": "The Moon Under Water",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/the-moon-under-water",
+      "feedTitle": "The Moon Under Water",
+      "episodeCount": 411
+    },
+    {
+      "name": "The Cuddle Club",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/cuddleclub",
+      "feedTitle": "Cuddle Club with Lou Sanders",
+      "episodeCount": 150
+    },
+    {
+      "name": "The Birthday Girls House Party",
+      "status": "verified",
+      "url": "https://anchor.fm/s/63e16794/podcast/rss",
+      "feedTitle": "Birthday Girls House Party",
+      "episodeCount": 226
+    },
+    {
+      "name": "The St Elwick's Neighbourhood Association Newsletter Podcast",
+      "status": "verified",
+      "url": "https://anchor.fm/s/f6fb9cc/podcast/rss",
+      "feedTitle": "St Elwick's Neighbourhood Association Newsletter Podcast",
+      "episodeCount": 33
+    },
+    {
+      "name": "The Gossipmongers Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/gossipmongers",
+      "feedTitle": "GOSSIPMONGERS",
+      "episodeCount": 15
+    },
+    {
+      "name": "The Clinton Baptiste Paranormal Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/clinton-baptiste-paranormal-podcast",
+      "feedTitle": "Clinton Baptiste's Paranormal Podcast",
+      "episodeCount": 24
+    },
+    {
+      "name": "The Taskmaster Podcast",
+      "status": "verified",
+      "url": "https://feeds.captivate.fm/taskmaster-the-podcast/",
+      "feedTitle": "Taskmaster The Podcast",
+      "episodeCount": 288
+    },
+    {
+      "name": "The Adam Friedland Show",
+      "status": "verified",
+      "url": "https://feeds.megaphone.fm/IMP6344549985",
+      "feedTitle": "The Adam Friedland Show",
+      "episodeCount": 513
+    },
+    {
+      "name": "Conan O'Brien Needs a Friend",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/dHoohVNH",
+      "feedTitle": "Conan O’Brien Needs A Friend",
+      "episodeCount": 747
+    },
+    {
+      "name": "The Sloppy Boys",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/thesloppyboys",
+      "feedTitle": "The Sloppy Boys",
+      "episodeCount": 335
+    },
+    {
+      "name": "The Dollop",
+      "status": "verified",
+      "url": "https://rss.art19.com/dollop",
+      "feedTitle": "The Dollop with Dave Anthony and Gareth Reynolds",
+      "episodeCount": 953
+    },
+    {
+      "name": "The Three Questions with Andy Richter",
+      "status": "verified",
+      "url": "https://feeds.simplecast.com/K0gTWLUN",
+      "feedTitle": "The Three Questions with Andy Richter",
+      "episodeCount": 515
+    },
+    {
+      "name": "The Off Menu Podcast",
+      "status": "verified",
+      "url": "https://feeds.acast.com/public/shows/b19ac1f5-6adf-4c8b-aa1a-2af2160f99e4",
+      "feedTitle": "Off Menu with Ed Gamble and James Acaster",
+      "episodeCount": 406
+    }
+  ],
+  "removedEntries": [
+    {
+      "name": "The Sample Lounge",
+      "status": "unresolved",
+      "reason": "A show hosted by Olu Femi is referenced publicly, but no public RSS endpoint was verified."
+    },
+    {
+      "name": "The Art of the Mix",
+      "status": "unresolved",
+      "reason": "Searches found a Mixcloud series, but no uniquely matching public podcast RSS."
+    },
+    {
+      "name": "NTS Radio",
+      "status": "unresolved",
+      "reason": "The public NTS 2020 SoundCloud RSS exists but contains no episodes. No populated station-wide podcast feed was verified."
+    },
+    {
+      "name": "The Craig Charles Funk and Soul Show",
+      "status": "unresolved",
+      "reason": "BBC music radio programme; no public podcast RSS for the full programme was verified."
+    },
+    {
+      "name": "The Huey Show",
+      "status": "unresolved",
+      "reason": "BBC music radio programme; no public podcast RSS for the full programme was verified."
+    },
+    {
+      "name": "The Jazz Show with Jamie Cullum",
+      "status": "unresolved",
+      "reason": "BBC music radio programme; no public podcast RSS for the full programme was verified."
+    },
+    {
+      "name": "The Funk and Soul Show",
+      "status": "unresolved",
+      "reason": "Ambiguous title: no publisher or host is provided to select a unique show."
+    },
+    {
+      "name": "The Scratch DJ Academy Podcast",
+      "status": "unresolved",
+      "reason": "No public podcast feed matching this title was verified."
+    },
+    {
+      "name": "The Story of Hip-Hop",
+      "status": "unresolved",
+      "reason": "Ambiguous title: search results contain multiple different hip-hop history shows."
+    },
+    {
+      "name": "The Producer's Podcast",
+      "status": "unresolved",
+      "reason": "Ambiguous title: multiple unrelated production podcasts use similar names."
+    },
+    {
+      "name": "The Drum and Bass Radio Show",
+      "status": "unresolved",
+      "reason": "Generic title: no publisher or host is provided to select a unique show."
+    },
+    {
+      "name": "Alpha Rhythm Drum and Bass Podcast",
+      "status": "unresolved",
+      "reason": "The public Alpha Rhythm SoundCloud RSS contains no episodes; a podcast series under this name was not verified."
+    },
+    {
+      "name": "The Liquid Drum and Bass Podcast",
+      "status": "unresolved",
+      "reason": "Several similarly named mix series exist; no unique match was verified."
+    },
+    {
+      "name": "Hospitality Podcast",
+      "status": "unresolved",
+      "reason": "Could refer to Hospital Records (already listed), or an unrelated hospitality-industry podcast. No distinct music feed verified."
+    },
+    {
+      "name": "DJcity Podcast",
+      "status": "unresolved",
+      "reason": "DJcity publishes mixes, but no current public RSS matching this catalogue entry was verified."
+    },
+    {
+      "name": "The World at One",
+      "status": "unresolved",
+      "reason": "BBC Radio 4 programme; no public podcast RSS matching the full programme was verified."
+    },
+    {
+      "name": "The MeidasTouch Network",
+      "status": "unresolved",
+      "reason": "Publisher/network rather than a uniquely identified podcast. The MeidasTouch Podcast is already listed."
+    },
+    {
+      "name": "The Mozilla Podcast",
+      "status": "unresolved",
+      "reason": "Publisher label rather than a unique show name; Mozilla has published IRL and other podcasts."
+    },
+    {
+      "name": "The Adam Curtis Podcast",
+      "status": "unresolved",
+      "reason": "No standalone podcast under this title was verified; search results were guest appearances on other shows."
+    },
+    {
+      "name": "The Infinite Monkey Cage Extras",
+      "status": "unresolved",
+      "reason": "No separate Extras feed was verified. The main Infinite Monkey Cage podcast is already listed."
+    }
+  ]
+}

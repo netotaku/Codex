@@ -1,0 +1,183 @@
+@use "tokens";
+
+$logo-breakpoint: 700px !default;
+
+.feed {
+  margin: 0;
+
+  &__header {
+    padding: clamp(26px, 5vw, 70px) clamp(22px, 6vw, 90px)
+      clamp(32px, 5vw, 75px);
+    border-bottom: 2px solid currentColor;
+  }
+
+  &__logo {
+    font-size: clamp(76px, 14vw, 230px);
+    font-weight: 700;
+    line-height: 0.76;
+    letter-spacing: -0.105em;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+
+    @media (max-width: $logo-breakpoint) {
+      font-size: clamp(68px, 16vw, 110px);
+    }
+  }
+
+  &__logo-line {
+    display: block;
+  }
+
+  &__main {
+    padding: 0 clamp(22px, 6vw, 90px) 100px;
+    max-width: 1700px;
+    margin: auto;
+  }
+
+  &__hero {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__tabs-wrap {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 35px;
+      width: 70px;
+      pointer-events: none;
+      background: linear-gradient(to right, transparent, tokens.$background);
+      opacity: 0;
+      transition: opacity 0.2s;
+
+      @media (max-width: 700px) {
+        bottom: 22px;
+      }
+    }
+
+    &--overflow::after {
+      opacity: 1;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 35px;
+    align-items: end;
+    border-bottom: 1px solid tokens.$muted;
+    padding-top: 28px;
+    margin-bottom: 35px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      gap: 27px;
+      margin-bottom: 22px;
+    }
+  }
+
+  &__tab {
+    flex: 0 0 auto;
+    cursor: pointer;
+    font: 600 clamp(18px, 2vw, 27px)/1 tokens.$font-family;
+    letter-spacing: -0.045em;
+    padding: 0 0 18px;
+    border: 0;
+    border-bottom: 4px solid transparent;
+    margin-bottom: -2px;
+    background: none;
+    color: tokens.$muted;
+
+    &--active {
+      border-bottom-color: tokens.$accent;
+      color: inherit;
+    }
+
+    &:focus-visible {
+      outline: 2px solid tokens.$accent;
+    }
+  }
+
+  &__count {
+    font-size: 13px;
+    vertical-align: top;
+    margin-left: 7px;
+    letter-spacing: 0;
+  }
+
+  &__heading {
+    margin: 0 0 26px;
+    font: 400 clamp(32px, 4vw, 50px)/1.2 monospace;
+    letter-spacing: 0.08em;
+  }
+
+  &__day {
+    margin-bottom: 28px;
+  }
+
+  &__day-heading {
+    margin: 0 0 10px;
+    font: 400 18px/1.4 monospace;
+    letter-spacing: 0.04em;
+  }
+
+  &__list {
+    line-height: 1.6;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 12px;
+    border-bottom: 1px solid tokens.$muted;
+
+    @media (max-width: 700px) {
+      padding-inline: 0;
+    }
+
+    &--playing {
+      background: rgba(tokens.$text, 0.07);
+    }
+
+    &:first-child {
+      border-top: 1px solid tokens.$muted;
+    }
+  }
+
+  &__status {
+    padding: 16px 0;
+    color: tokens.$muted;
+  }
+
+  &__load-more {
+    margin-top: 25px;
+    background: none;
+    border: 1px solid tokens.$text;
+    padding: 12px 22px;
+    font: 600 16px tokens.$font-family;
+    cursor: pointer;
+  }
+}

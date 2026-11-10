@@ -1,0 +1,18 @@
+@use "tokens";
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  font-family: tokens.$font-family;
+  background: tokens.$background;
+  color: tokens.$text;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}

@@ -1,0 +1,34 @@
+@use "tokens";
+@use "base";
+@use "feed" with (
+  $logo-breakpoint: 520px
+);
+
+.feed {
+  &__people {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 40px;
+
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 25px;
+    }
+
+    @media (max-width: 520px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__person {
+    font-size: clamp(18px, 2vw, 27px);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    padding: 15px 0;
+    border-bottom: 1px solid tokens.$border;
+    line-height: 1.15;
+  }
+}
